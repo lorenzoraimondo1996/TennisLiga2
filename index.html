@@ -108,6 +108,30 @@ select option { background: #111827; }
 .profile-avatar-wrap { position: relative; width: 90px; height: 90px; margin: 0 auto 12px; }
 .profile-avatar { width: 90px; height: 90px; border-radius: 50%; background-size: cover; background-position: center; border: 2px solid rgba(201,168,76,0.4); display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 900; color: #0a0e1a; }
 .profile-avatar-edit { position: absolute; bottom: 0; right: 0; width: 30px; height: 30px; border-radius: 50%; background: #c9a84c; color: #0a0e1a; border: 2px solid #111827; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 14px; }
+.toggle-row { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
+.toggle-label { color: #f0ede8; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+.toggle { position: relative; width: 48px; height: 26px; background: #4a5068; border-radius: 999px; cursor: pointer; transition: background 0.2s; flex-shrink: 0; }
+.toggle::after { content: ''; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: transform 0.2s; }
+.toggle.on { background: #c9a84c; }
+.toggle.on::after { transform: translateX(22px); }
+.surface-selector { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.surface-btn { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 14px 6px; text-align: center; cursor: pointer; transition: all 0.15s; color: #8a8fa8; }
+.surface-btn.sel { background: rgba(201,168,76,0.12); border-color: #c9a84c; color: #f0ede8; }
+.surface-btn-icon { font-size: 22px; display: block; margin-bottom: 4px; }
+.surface-btn-label { font-size: 10px; letter-spacing: 1px; font-weight: 700; text-transform: uppercase; }
+.indoor-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.surface-pill { display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.05); border-radius: 999px; padding: 3px 10px; font-size: 11px; color: #8a8fa8; font-weight: 600; }
+.bet-card { background: linear-gradient(135deg, #1a1530, #2a1f3e); border: 1px solid rgba(201,168,76,0.3); border-radius: 12px; padding: 16px; margin-bottom: 10px; position: relative; overflow: hidden; }
+.bet-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #c9a84c, transparent); }
+.bet-vs { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+.bet-player { flex: 1; text-align: center; padding: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; cursor: pointer; transition: all 0.15s; }
+.bet-player:hover { border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.06); }
+.bet-player.picked { border-color: #c9a84c; background: rgba(201,168,76,0.14); }
+.bet-player.disabled { cursor: not-allowed; opacity: 0.5; }
+.bet-name { font-size: 13px; font-weight: 700; color: #f0ede8; margin-top: 6px; }
+.bet-elo { font-size: 10px; color: #8a8fa8; margin-top: 2px; }
+.bet-vs-div { color: #c9a84c; font-weight: 900; font-size: 18px; letter-spacing: 2px; }
+.bet-meta { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #8a8fa8; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.07); }
 .flex { display: flex; } .gap-8 { gap: 8px; } .gap-12 { gap: 12px; } .flex-1 { flex: 1; }
 </style>
 </head>
@@ -184,6 +208,10 @@ select option { background: #111827; }
         <div class="section-title" id="dash-pending-title">Da Confermare</div>
         <div id="dash-pending-list"></div>
       </div>
+      <div id="dash-bets" class="section" style="display:none">
+        <div class="section-title">🎰 Scommesse Aperte</div>
+        <div id="dash-bets-list"></div>
+      </div>
       <div class="section">
         <div class="section-title">Classifica</div>
         <div class="lb-table">
@@ -202,6 +230,9 @@ select option { background: #111827; }
       <div class="action-row">
         <button class="btn-primary" onclick="showScreen('newmatch')">+ Nuova Partita</button>
         <button class="btn-ghost" onclick="showScreen('history')">Storico</button>
+      </div>
+      <div id="dash-announce-wrap" style="margin-top:10px;display:none">
+        <button class="btn-ghost" style="width:100%;border-color:rgba(201,168,76,0.3);color:#c9a84c" onclick="showScreen('announce')">🎰 Annuncia Partita per Scommesse</button>
       </div>
       <div style="margin-top:10px">
         <button class="btn-ghost" style="width:100%" onclick="showScreen('campi')">🏟 Campi da Tennis</button>
@@ -228,16 +259,36 @@ select option { background: #111827; }
         <span class="league-banner-name" id="admin-league-title"></span>
         <span style="color:#8a8fa8;font-size:12px" id="admin-member-count"></span>
       </div>
-      <div class="section">
-        <div class="section-title">Aggiungi Giocatore</div>
-        <div><label class="field-label">Email</label><input id="admin-invite-email" type="email" placeholder="email del giocatore" style="margin-bottom:12px"/></div>
-        <button class="btn-primary" onclick="invitePlayer()">Aggiungi</button>
-      </div>
-      <div class="section">
-        <div class="section-title">Giocatori</div>
-        <div id="admin-members-list"></div>
-      </div>
+
+```
+  <div class="section">
+    <div class="section-title">🎰 Ludopatia</div>
+    <div class="toggle-row">
+      <span class="toggle-label">Scommesse attive</span>
+      <div id="ludo-toggle" class="toggle" onclick="toggleLudopatia()"></div>
     </div>
+    <div id="ludo-amount-wrap" style="display:none">
+      <label class="field-label">Posta scommessa (Pt)</label>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input id="ludo-amount" type="number" min="1" max="50" style="flex:1" oninput="null"/>
+        <button class="btn-small" onclick="saveBetAmount()">Salva</button>
+      </div>
+      <p style="color:#4a5068;font-size:11px;margin-top:6px">Quanti Pt si vincono/perdono indovinando una partita</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Aggiungi Giocatore</div>
+    <div><label class="field-label">Email</label><input id="admin-invite-email" type="email" placeholder="email del giocatore" style="margin-bottom:12px"/></div>
+    <button class="btn-primary" onclick="invitePlayer()">Aggiungi</button>
+  </div>
+  <div class="section">
+    <div class="section-title">Giocatori</div>
+    <div id="admin-members-list"></div>
+  </div>
+</div>
+```
+
   </div>
 </div>
 
@@ -274,6 +325,23 @@ select option { background: #111827; }
       <p style="color:#4a5068;font-size:11px;margin-top:10px">Ace +0.5 a chi li fa · Doppio Fallo / Racchetta +0.5 all'avversario</p>
     </div>
     <button class="btn-primary" onclick="submitMatch()">Invia per Conferma</button>
+  </div>
+</div>
+
+<!-- ANNOUNCE MATCH -->
+
+<div id="screen-announce" class="screen">
+  <div class="page-header">
+    <span class="header-logo">🎰 Annuncia</span>
+    <button class="btn-small" onclick="showScreen('dashboard')">← Indietro</button>
+  </div>
+  <div class="page-content">
+    <div class="section">
+      <div class="section-title">Avversario</div>
+      <select id="ann-opponent"></select>
+      <p style="color:#4a5068;font-size:12px;margin-top:10px;line-height:1.5">Una volta annunciata, gli altri membri della lega potranno scommettere su chi vincerà. Le scommesse si risolvono appena viene confermato il risultato.</p>
+    </div>
+    <button class="btn-primary" onclick="submitAnnouncement()">Annuncia Partita</button>
   </div>
 </div>
 
@@ -369,8 +437,19 @@ select option { background: #111827; }
     <div id="campi-admin-section" style="display:none">
       <div class="section">
         <div class="section-title">Aggiungi Campo</div>
-        <div><label class="field-label">Nome campo</label><input id="campo-nome" type="text" placeholder="es. Tennis Club Roma" style="margin-bottom:8px"/></div>
-        <div><label class="field-label">Link prenotazione</label><input id="campo-url" type="url" placeholder="https://..." style="margin-bottom:12px"/></div>
+        <div><label class="field-label">Nome campo</label><input id="campo-nome" type="text" placeholder="es. Tennis Club Roma" style="margin-bottom:10px"/></div>
+        <div><label class="field-label">Link prenotazione</label><input id="campo-url" type="url" placeholder="https://..." style="margin-bottom:10px"/></div>
+        <label class="field-label">Superficie</label>
+        <div class="surface-selector" id="surface-sel">
+          <div class="surface-btn" data-surface="terra" onclick="selectSurface('terra')"><span class="surface-btn-icon">🟠</span><span class="surface-btn-label">Terra</span></div>
+          <div class="surface-btn" data-surface="cemento" onclick="selectSurface('cemento')"><span class="surface-btn-icon">⬜</span><span class="surface-btn-label">Cemento</span></div>
+          <div class="surface-btn" data-surface="sintetico" onclick="selectSurface('sintetico')"><span class="surface-btn-icon">🟢</span><span class="surface-btn-label">Sintetico</span></div>
+        </div>
+        <label class="field-label">Copertura</label>
+        <div class="indoor-selector" id="indoor-sel">
+          <div class="surface-btn" data-indoor="false" onclick="selectIndoor(false)"><span class="surface-btn-icon">☀️</span><span class="surface-btn-label">Scoperto</span></div>
+          <div class="surface-btn" data-indoor="true" onclick="selectIndoor(true)"><span class="surface-btn-icon">☂️</span><span class="surface-btn-label">Coperto</span></div>
+        </div>
         <button class="btn-primary" onclick="addCampo()">Aggiungi Campo</button>
       </div>
     </div>
@@ -398,18 +477,20 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-let state = { users:{}, leagues:{}, memberships:{}, matches:{}, campi:{} };
+let state = { users:{}, leagues:{}, memberships:{}, matches:{}, campi:{}, announcements:{}, bets:{} };
 let currentUser = null;
 let confirmMatchData = null;
 let nmSets = 2;
 let nmIgnorant = { aces_p1:0, aces_p2:0, df_p1:0, df_p2:0, racket_p1:0, racket_p2:0 };
 let profileUserId = null;
+let campoSurface = null;
+let campoIndoor = null;
 
 function vals(obj){ return obj ? Object.values(obj) : []; }
 
 onValue(ref(db,'/'), (snap) => {
   const d = snap.val() || {};
-  state = { users:d.users||{}, leagues:d.leagues||{}, memberships:d.memberships||{}, matches:d.matches||{}, campi:d.campi||{} };
+  state = { users:d.users||{}, leagues:d.leagues||{}, memberships:d.memberships||{}, matches:d.matches||{}, campi:d.campi||{}, announcements:d.announcements||{}, bets:d.bets||{} };
   document.getElementById('loading-overlay').style.display = 'none';
   const active = document.querySelector('.screen.active');
   if (active) {
@@ -419,10 +500,11 @@ onValue(ref(db,'/'), (snap) => {
     if (id==='history') renderHistory();
     if (id==='player') renderPlayerProfile();
     if (id==='campi') renderCampi();
+    if (id==='announce') renderAnnounce();
   }
 });
 
-// ── AVATAR HELPERS ──
+// ── AVATAR ──
 function initials(name){
   if(!name) return '?';
   const parts=name.trim().split(/\s+/);
@@ -478,11 +560,6 @@ document.getElementById('photo-input').addEventListener('change',async e=>{
     toast('Errore nel caricamento','error');
   }
 });
-window.removeMyPhoto=async function(){
-  if(!currentUser) return;
-  await update(ref(db,'users/'+currentUser.id),{photo:null});
-  toast('Foto rimossa');
-};
 
 // ELO
 function expectedScore(a,b){ return 1/(1+Math.pow(10,(b-a)/400)); }
@@ -521,6 +598,7 @@ function showScreen(name){
   if(name==='history') renderHistory();
   if(name==='player') renderPlayerProfile();
   if(name==='campi') renderCampi();
+  if(name==='announce') renderAnnounce();
 }
 window.showScreen=showScreen;
 
@@ -597,6 +675,8 @@ function renderDashboard(){
   document.getElementById('dash-league-content').style.display='block';
   document.getElementById('dash-league-name').textContent=league.name;
   document.getElementById('dash-elo').textContent=mem.rating+' Pt';
+
+  // Pending matches
   const pending=vals(state.matches).filter(m=>m.status==='pending'&&m.p2Id===currentUser.id);
   const pendDiv=document.getElementById('dash-pending');
   if(pending.length>0){
@@ -607,6 +687,53 @@ function renderDashboard(){
       return '<div class="pending-card" onclick="openConfirm(\''+m.id+'\')"><span style="color:#f0ede8"><b>'+(p1?.name||'?')+'</b> ha inserito un risultato</span><span class="confirm-btn">Conferma</span></div>';
     }).join('');
   } else { pendDiv.style.display='none'; }
+
+  // LUDOPATIA
+  const ludoOn=!!league.ludopatia;
+  const betAmt=league.betAmount||3;
+  document.getElementById('dash-announce-wrap').style.display=ludoOn?'block':'none';
+
+  const betsDiv=document.getElementById('dash-bets');
+  if(ludoOn){
+    const openAnn=vals(state.announcements).filter(a=>a.leagueId===league.id&&a.status==='open');
+    if(openAnn.length>0){
+      betsDiv.style.display='block';
+      document.getElementById('dash-bets-list').innerHTML=openAnn.map(a=>{
+        const p1=state.users[a.p1Id],p2=state.users[a.p2Id];
+        const m1=vals(state.memberships).find(m=>m.userId===a.p1Id);
+        const m2=vals(state.memberships).find(m=>m.userId===a.p2Id);
+        const myBet=vals(state.bets).find(b=>b.announcementId===a.id&&b.userId===currentUser.id);
+        const isPlayer=a.p1Id===currentUser.id||a.p2Id===currentUser.id;
+        const canBet=!isPlayer&&!myBet;
+        const betCount=vals(state.bets).filter(b=>b.announcementId===a.id).length;
+        const pick1=myBet?.pickUserId===a.p1Id?'picked':'';
+        const pick2=myBet?.pickUserId===a.p2Id?'picked':'';
+        const disabled=canBet?'':'disabled';
+        const action1=canBet?'onclick="placeBet(\''+a.id+'\',\''+a.p1Id+'\')"':'';
+        const action2=canBet?'onclick="placeBet(\''+a.id+'\',\''+a.p2Id+'\')"':'';
+        const meta=isPlayer?'La tua partita — non puoi scommettere':myBet?('Hai puntato su '+state.users[myBet.pickUserId]?.name):('Scommetti '+betAmt+' Pt');
+        const cancelBtn=a.announcedBy===currentUser.id?'<button class="btn-small" style="margin-left:8px" onclick="cancelAnnouncement(\''+a.id+'\')">Cancella</button>':'';
+        return '<div class="bet-card">'+
+          '<div class="bet-vs">'+
+            '<div class="bet-player '+pick1+' '+disabled+'" '+action1+'>'+
+              avatarHTML(p1,44)+
+              '<div class="bet-name">'+(p1?.name||'?')+'</div>'+
+              '<div class="bet-elo">'+(m1?.rating||'?')+' Pt</div>'+
+            '</div>'+
+            '<span class="bet-vs-div">VS</span>'+
+            '<div class="bet-player '+pick2+' '+disabled+'" '+action2+'>'+
+              avatarHTML(p2,44)+
+              '<div class="bet-name">'+(p2?.name||'?')+'</div>'+
+              '<div class="bet-elo">'+(m2?.rating||'?')+' Pt</div>'+
+            '</div>'+
+          '</div>'+
+          '<div class="bet-meta"><span>'+meta+'</span><span>🎰 '+betCount+' scommess'+(betCount===1?'a':'e')+cancelBtn+'</span></div>'+
+        '</div>';
+      }).join('');
+    } else { betsDiv.style.display='none'; }
+  } else { betsDiv.style.display='none'; }
+
+  // Leaderboard
   const members=vals(state.memberships).filter(m=>m.leagueId===league.id)
     .map(m=>({...m,user:state.users[m.userId]}))
     .sort((a,b)=>b.rating-a.rating);
@@ -637,9 +764,32 @@ function renderAdmin(){
     document.getElementById('admin-create-section').style.display='none';
     document.getElementById('admin-manage-section').style.display='block';
     document.getElementById('admin-league-title').textContent=myLeague.name;
+    // Ludopatia toggle state
+    const ludoOn=!!myLeague.ludopatia;
+    const tgl=document.getElementById('ludo-toggle');
+    tgl.classList.toggle('on',ludoOn);
+    document.getElementById('ludo-amount-wrap').style.display=ludoOn?'block':'none';
+    document.getElementById('ludo-amount').value=myLeague.betAmount||3;
     renderAdminMembers(myLeague);
   }
 }
+window.toggleLudopatia=async function(){
+  const myLeague=vals(state.leagues).find(l=>l.adminId===currentUser.id);
+  if(!myLeague) return;
+  const next=!myLeague.ludopatia;
+  const updates={ludopatia:next};
+  if(next&&!myLeague.betAmount) updates.betAmount=3;
+  await update(ref(db,'leagues/'+myLeague.id),updates);
+  toast('Ludopatia '+(next?'attivata':'disattivata'));
+};
+window.saveBetAmount=async function(){
+  const myLeague=vals(state.leagues).find(l=>l.adminId===currentUser.id);
+  if(!myLeague) return;
+  const v=parseInt(document.getElementById('ludo-amount').value);
+  if(isNaN(v)||v<1||v>50) return toast('Valore tra 1 e 50','error');
+  await update(ref(db,'leagues/'+myLeague.id),{betAmount:v});
+  toast('Posta aggiornata a '+v+' Pt');
+};
 function renderAdminMembers(myLeague){
   const members=vals(state.memberships).filter(m=>m.leagueId===myLeague.id)
     .map(m=>({...m,user:state.users[m.userId]}));
@@ -674,7 +824,7 @@ window.createLeague=async function(){
   if(!name) return toast('Inserisci il nome della lega','error');
   if(vals(state.leagues).find(l=>l.adminId===currentUser.id)) return toast('Hai gia una lega','error');
   const lid='l_'+Date.now(),mid='m_'+Date.now();
-  await set(ref(db,'leagues/'+lid),{id:lid,name,adminId:currentUser.id});
+  await set(ref(db,'leagues/'+lid),{id:lid,name,adminId:currentUser.id,ludopatia:false,betAmount:3});
   await set(ref(db,'memberships/'+mid),{id:mid,userId:currentUser.id,leagueId:lid,rating:1000,wins:0,losses:0,ignorantPoints:0});
   await update(ref(db,'users/'+currentUser.id),{isAdmin:true});
   toast('Lega "'+name+'" creata!');
@@ -800,6 +950,49 @@ window.submitMatch=async function(){
   showScreen('dashboard');
 };
 
+// ANNOUNCE
+function renderAnnounce(){
+  const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
+  if(!mem) return;
+  const opponents=vals(state.memberships).filter(m=>m.leagueId===mem.leagueId&&m.userId!==currentUser.id)
+    .map(m=>({...m,name:state.users[m.userId]?.name||'?'}));
+  const sel=document.getElementById('ann-opponent');
+  sel.innerHTML='<option value="">Seleziona avversario</option>'+opponents.map(o=>'<option value="'+o.userId+'">'+o.name+' ('+o.rating+' Pt)</option>').join('');
+}
+window.submitAnnouncement=async function(){
+  const oppId=document.getElementById('ann-opponent').value;
+  if(!oppId) return toast('Seleziona un avversario','error');
+  const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
+  // Check if same announcement already exists
+  const existing=vals(state.announcements).find(a=>a.leagueId===mem.leagueId&&a.status==='open'&&((a.p1Id===currentUser.id&&a.p2Id===oppId)||(a.p1Id===oppId&&a.p2Id===currentUser.id)));
+  if(existing) return toast('Partita gia annunciata','error');
+  const aid='ann_'+Date.now();
+  await set(ref(db,'announcements/'+aid),{id:aid,leagueId:mem.leagueId,p1Id:currentUser.id,p2Id:oppId,announcedBy:currentUser.id,status:'open',createdAt:Date.now()});
+  toast('Partita annunciata!');
+  showScreen('dashboard');
+};
+window.placeBet=async function(annId,pickId){
+  const ann=state.announcements[annId];
+  if(!ann||ann.status!=='open') return;
+  if(ann.p1Id===currentUser.id||ann.p2Id===currentUser.id) return toast('Non puoi scommettere sulla tua partita','error');
+  const existing=vals(state.bets).find(b=>b.announcementId===annId&&b.userId===currentUser.id);
+  if(existing) return toast('Hai gia scommesso','error');
+  const bid='bet_'+Date.now();
+  await set(ref(db,'bets/'+bid),{id:bid,announcementId:annId,userId:currentUser.id,pickUserId:pickId,status:'open'});
+  toast('Scommessa piazzata su '+(state.users[pickId]?.name||'?'));
+};
+window.cancelAnnouncement=async function(annId){
+  const ann=state.announcements[annId];
+  if(!ann) return;
+  if(ann.announcedBy!==currentUser.id) return toast('Solo chi ha annunciato puo cancellare','error');
+  await update(ref(db,'announcements/'+annId),{status:'cancelled'});
+  const openBets=vals(state.bets).filter(b=>b.announcementId===annId&&b.status==='open');
+  for(const b of openBets){
+    await update(ref(db,'bets/'+b.id),{status:'cancelled'});
+  }
+  toast('Annuncio cancellato');
+};
+
 // CONFIRM MATCH
 window.openConfirm=function(matchId){
   confirmMatchData=vals(state.matches).find(m=>m.id===matchId);
@@ -841,10 +1034,36 @@ window.confirmMatch=async function(){
   const ig=m.ignorant;
   const p1Ig=(ig.aces_p1*0.5)+(ig.df_p2*0.5)+(ig.racket_p2*0.5);
   const p2Ig=(ig.aces_p2*0.5)+(ig.df_p1*0.5)+(ig.racket_p1*0.5);
-  await update(ref(db,'memberships/'+wMem.id),{rating:wMem.rating+eloChange,wins:wMem.wins+1,ignorantPoints:(wMem.ignorantPoints||0)+(winnerId===m.p1Id?p1Ig:p2Ig)});
-  await update(ref(db,'memberships/'+lMem.id),{rating:Math.max(100,lMem.rating-eloChange),losses:lMem.losses+1,ignorantPoints:(lMem.ignorantPoints||0)+(loserId===m.p1Id?p1Ig:p2Ig)});
+  let newWRating=wMem.rating+eloChange;
+  let newLRating=Math.max(100,lMem.rating-eloChange);
+  let newIgW=(wMem.ignorantPoints||0)+(winnerId===m.p1Id?p1Ig:p2Ig);
+  let newIgL=(lMem.ignorantPoints||0)+(loserId===m.p1Id?p1Ig:p2Ig);
+
+  // ── RESOLVE BETS ──
+  const league=state.leagues[m.leagueId];
+  const betAmt=league?.betAmount||3;
+  const ann=vals(state.announcements).find(a=>a.leagueId===m.leagueId&&a.status==='open'&&((a.p1Id===m.p1Id&&a.p2Id===m.p2Id)||(a.p1Id===m.p2Id&&a.p2Id===m.p1Id)));
+  let betResults=[];
+  if(ann){
+    const openBets=vals(state.bets).filter(b=>b.announcementId===ann.id&&b.status==='open');
+    for(const b of openBets){
+      const betterMem=vals(state.memberships).find(mm=>mm.userId===b.userId);
+      if(!betterMem) continue;
+      const won=b.pickUserId===winnerId;
+      const newRating=won?betterMem.rating+betAmt:Math.max(100,betterMem.rating-betAmt);
+      await update(ref(db,'memberships/'+betterMem.id),{rating:newRating});
+      await update(ref(db,'bets/'+b.id),{status:won?'won':'lost',resolvedAmount:betAmt});
+      betResults.push((won?'+':'-')+betAmt+' '+(state.users[b.userId]?.name||'?'));
+    }
+    await update(ref(db,'announcements/'+ann.id),{status:'played',matchId:m.id});
+  }
+
+  await update(ref(db,'memberships/'+wMem.id),{rating:newWRating,wins:wMem.wins+1,ignorantPoints:newIgW});
+  await update(ref(db,'memberships/'+lMem.id),{rating:newLRating,losses:lMem.losses+1,ignorantPoints:newIgL});
   await update(ref(db,'matches/'+m.id),{status:'confirmed',eloChange});
-  toast(state.users[winnerId]?.name+' +'+eloChange+' Pt');
+  let msg=state.users[winnerId]?.name+' +'+eloChange+' Pt';
+  if(betResults.length) msg+=' · 🎰 '+betResults.length+' scommess'+(betResults.length===1?'a':'e')+' risolte';
+  toast(msg);
   confirmMatchData=null;
   showScreen('dashboard');
 };
@@ -948,10 +1167,32 @@ function renderHistory(){
 }
 
 // CAMPI
+window.selectSurface=function(s){
+  campoSurface=s;
+  document.querySelectorAll('#surface-sel .surface-btn').forEach(b=>{
+    b.classList.toggle('sel',b.dataset.surface===s);
+  });
+};
+window.selectIndoor=function(v){
+  campoIndoor=v;
+  document.querySelectorAll('#indoor-sel .surface-btn').forEach(b=>{
+    b.classList.toggle('sel',b.dataset.indoor===String(v));
+  });
+};
+function surfaceMeta(s){
+  if(s==='terra') return {icon:'🟠',label:'Terra rossa',color:'#d06a3a'};
+  if(s==='cemento') return {icon:'⬜',label:'Cemento',color:'#8a8fa8'};
+  if(s==='sintetico') return {icon:'🟢',label:'Sintetico',color:'#4caf7d'};
+  return {icon:'❓',label:'—',color:'#8a8fa8'};
+}
 function renderCampi(){
   if(!currentUser) return;
   const myLeague=vals(state.leagues).find(l=>l.adminId===currentUser.id);
   document.getElementById('campi-admin-section').style.display=myLeague?'block':'none';
+  // reset selectors
+  campoSurface=null; campoIndoor=null;
+  document.querySelectorAll('#surface-sel .surface-btn').forEach(b=>b.classList.remove('sel'));
+  document.querySelectorAll('#indoor-sel .surface-btn').forEach(b=>b.classList.remove('sel'));
   const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
   const campi=vals(state.campi||{}).filter(c=>c.leagueId===mem?.leagueId);
   const list=document.getElementById('campi-list');
@@ -959,18 +1200,24 @@ function renderCampi(){
     list.innerHTML='<div class="empty-state"><p>Nessun campo aggiunto.<br>L\'admin puo aggiungerne.</p></div>';
     return;
   }
-  list.innerHTML=campi.map(c=>
-    '<div class="history-card" style="display:flex;align-items:center;justify-content:space-between">'+
-      '<div>'+
-        '<div style="color:#f0ede8;font-weight:700;margin-bottom:4px">'+c.nome+'</div>'+
-        '<div style="color:#8a8fa8;font-size:12px">'+c.url+'</div>'+
+  list.innerHTML=campi.map(c=>{
+    const sm=surfaceMeta(c.surface);
+    const indoor=c.indoor?'☂️ Coperto':'☀️ Scoperto';
+    return '<div class="history-card" style="display:flex;align-items:center;justify-content:space-between">'+
+      '<div style="flex:1;min-width:0">'+
+        '<div style="color:#f0ede8;font-weight:700;margin-bottom:6px">'+c.nome+'</div>'+
+        '<div style="display:flex;gap:6px;margin-bottom:6px;flex-wrap:wrap">'+
+          '<span class="surface-pill" style="color:'+sm.color+'">'+sm.icon+' '+sm.label+'</span>'+
+          '<span class="surface-pill">'+indoor+'</span>'+
+        '</div>'+
+        '<div style="color:#4a5068;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+c.url+'</div>'+
       '</div>'+
-      '<div style="display:flex;gap:8px;flex-shrink:0;margin-left:12px">'+
+      '<div style="display:flex;gap:8px;flex-shrink:0;margin-left:12px;flex-direction:column;align-items:flex-end">'+
         '<a href="'+c.url+'" target="_blank"><button class="btn-primary" style="width:auto;padding:8px 14px;font-size:12px;border-radius:8px">Prenota</button></a>'+
         (myLeague?'<button class="btn-danger" onclick="removeCampo(\''+c.id+'\')">✕</button>':'')+
       '</div>'+
-    '</div>'
-  ).join('');
+    '</div>';
+  }).join('');
 }
 window.addCampo=async function(){
   const myLeague=vals(state.leagues).find(l=>l.adminId===currentUser.id);
@@ -978,10 +1225,15 @@ window.addCampo=async function(){
   const nome=document.getElementById('campo-nome').value.trim();
   const url=document.getElementById('campo-url').value.trim();
   if(!nome||!url) return toast('Compila nome e link','error');
+  if(!campoSurface) return toast('Scegli la superficie','error');
+  if(campoIndoor===null) return toast('Indica se e coperto','error');
   const id='campo_'+Date.now();
-  await set(ref(db,'campi/'+id),{id,nome,url,leagueId:myLeague.id});
+  await set(ref(db,'campi/'+id),{id,nome,url,leagueId:myLeague.id,surface:campoSurface,indoor:campoIndoor});
   document.getElementById('campo-nome').value='';
   document.getElementById('campo-url').value='';
+  campoSurface=null; campoIndoor=null;
+  document.querySelectorAll('#surface-sel .surface-btn').forEach(b=>b.classList.remove('sel'));
+  document.querySelectorAll('#indoor-sel .surface-btn').forEach(b=>b.classList.remove('sel'));
   toast('Campo aggiunto!');
 };
 window.removeCampo=async function(id){
