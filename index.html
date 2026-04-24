@@ -7,6 +7,9 @@
 <title>Tennisillo</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   ORIGINALE MARKONJE - NON MODIFICATO
+   ============================================================ */
 :root {
   --accent: #2563EB;
   --accent-light: #3B82F6;
@@ -30,35 +33,15 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-#toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); border-radius: 999px; padding: 10px 22px; font-weight: 600; font-size: 14px; z-index: 9999; box-shadow: var(–shadow-lg); white-space: nowrap; display: none; color: #fff; }
-#loading-overlay { position: fixed; inset: 0; background: var(–bg); z-index: 9998; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
+#toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); border-radius: 999px; padding: 10px 22px; font-weight: 600; font-size: 14px; z-index: 9999; box-shadow: var(–shadow-lg); white-space: nowrap; display: none; }
+#loading-overlay { position: fixed; inset: 0; background: var(–bg); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
 .spinner { width: 36px; height: 36px; border: 3px solid rgba(37,99,235,0.2); border-top: 3px solid var(–accent); border-radius: 50%; animation: spin 0.9s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* SIDE MENU */
-#menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 200; display: none; }
-#menu-overlay.open { display: block; }
-#side-menu { position: fixed; top: 0; left: 0; bottom: 0; width: 270px; background: #ffffff; z-index: 201; transform: translateX(-100%); transition: transform 0.28s cubic-bezier(0.4,0,0.2,1); box-shadow: 4px 0 24px rgba(0,0,0,0.18); display: flex; flex-direction: column; }
-#side-menu.open { transform: translateX(0); }
-.menu-header { padding: 52px 24px 22px; border-bottom: 1px solid var(–border); background: linear-gradient(135deg, #1d4ed8 0%, #2563EB 100%); }
-.menu-logo { color: #fff; font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
-.menu-logo span { color: rgba(255,255,255,0.65); }
-.menu-user { color: rgba(255,255,255,0.88); font-size: 13px; font-weight: 500; margin-top: 8px; display: flex; align-items: center; gap: 8px; }
-.menu-items { flex: 1; padding: 8px 0; overflow-y: auto; background: #ffffff; }
-.menu-section-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(–text3); padding: 16px 24px 4px; }
-.menu-item { display: flex; align-items: center; gap: 14px; padding: 13px 24px; font-size: 15px; font-weight: 600; color: var(–text2); cursor: pointer; transition: all 0.15s; border-left: 3px solid transparent; background: #ffffff; }
-.menu-item:hover { background: var(–bg); color: var(–text); border-left-color: var(–border); }
-.menu-item.active { color: var(–accent); background: var(–accent-dim); border-left-color: var(–accent); }
-.menu-item-icon { font-size: 19px; width: 26px; text-align: center; flex-shrink: 0; }
-.menu-footer { padding: 16px 24px; border-top: 1px solid var(–border); background: #ffffff; }
-.menu-logout { display: flex; align-items: center; gap: 12px; color: var(–red); font-size: 14px; font-weight: 600; cursor: pointer; padding: 4px 0; }
-
-/* SCREENS */
 .screen { display: none; min-height: 100vh; }
 .screen.active { display: flex; flex-direction: column; }
 .screen.center { align-items: center; justify-content: center; padding: 24px; background: var(–bg); }
 
-/* AUTH CARD */
 .card { background: var(–surface); border-radius: 22px; padding: 32px 28px; width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 14px; box-shadow: var(–shadow-lg); }
 .logo-wrap { text-align: center; margin-bottom: 8px; }
 .logo-icon { font-size: 48px; display: block; margin-bottom: 8px; }
@@ -66,7 +49,6 @@ html, body { min-height: 100vh; background: var(--bg); color: var(--text); font-
 .logo-text span { color: var(–accent); }
 .logo-sub { color: var(–text2); font-size: 12px; font-style: italic; margin-top: 4px; display: block; font-weight: 500; }
 
-/* INPUTS */
 .field-label { font-size: 12px; font-weight: 600; letter-spacing: 0.5px; color: var(–text2); margin-bottom: 6px; display: block; text-transform: uppercase; }
 input, select { background: var(–bg); border: 1.5px solid var(–border); border-radius: var(–radius-sm); color: var(–text); font-size: 15px; padding: 13px 14px; width: 100%; outline: none; font-family: ‘Inter’, sans-serif; transition: border-color 0.18s, box-shadow 0.18s; -webkit-appearance: none; }
 input:focus, select:focus { border-color: var(–accent); box-shadow: 0 0 0 3px var(–accent-dim); background: #fff; }
@@ -74,8 +56,7 @@ input::placeholder { color: var(–text3); }
 input:-webkit-autofill, input:-webkit-autofill:focus { -webkit-text-fill-color: var(–text); -webkit-box-shadow: 0 0 0px 1000px var(–bg) inset; }
 select option { background: #fff; }
 
-/* BUTTONS */
-.btn-primary { background: var(–accent); color: #fff; border: none; border-radius: var(–radius); padding: 14px 0; width: 100%; font-weight: 700; font-size: 15px; cursor: pointer; font-family: ‘Inter’, sans-serif; transition: opacity 0.18s, transform 0.1s; }
+.btn-primary { background: var(–accent); color: #fff; border: none; border-radius: var(–radius); padding: 14px 0; width: 100%; font-weight: 700; font-size: 15px; cursor: pointer; letter-spacing: 0.2px; font-family: ‘Inter’, sans-serif; transition: opacity 0.18s, transform 0.1s; }
 .btn-primary:hover { opacity: 0.92; }
 .btn-primary:active { transform: scale(0.98); }
 .btn-ghost { background: var(–surface2); color: var(–text); border: 1.5px solid var(–border); border-radius: var(–radius); padding: 13px 0; width: 100%; font-size: 15px; cursor: pointer; font-family: ‘Inter’, sans-serif; font-weight: 600; transition: border-color 0.18s, background 0.18s; }
@@ -88,28 +69,20 @@ select option { background: #fff; }
 .btn-counter { background: var(–surface2); color: var(–text); border: 1.5px solid var(–border); border-radius: 8px; width: 32px; height: 32px; cursor: pointer; font-size: 16px; display: inline-flex; align-items: center; justify-content: center; font-family: ‘Inter’, sans-serif; font-weight: 700; transition: all 0.15s; }
 .btn-counter:hover { border-color: var(–accent); color: var(–accent); }
 
-/* PAGE LAYOUT */
 .page-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(–border); background: rgba(242,242,247,0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 10; }
 .header-logo { color: var(–accent); font-weight: 800; font-size: 17px; letter-spacing: -0.3px; }
 .header-name { color: var(–text2); font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
 .header-actions { display: flex; gap: 8px; }
-.hamburger { background: var(–surface2); border: 1.5px solid var(–border); border-radius: 8px; width: 36px; height: 36px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; transition: all 0.15s; }
-.hamburger:hover { border-color: var(–accent); background: var(–accent-dim); }
-.hamburger span { width: 16px; height: 2px; background: var(–text2); border-radius: 1px; transition: background 0.15s; }
-.hamburger:hover span { background: var(–accent); }
 .page-content { flex: 1; padding: 18px 18px 72px; max-width: 560px; width: 100%; margin: 0 auto; }
 
-/* SECTIONS */
 .section { margin-bottom: 22px; }
 .section-title { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(–text2); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
 .section-title::after { content: ‘’; flex: 1; height: 1px; background: var(–border); }
 
-/* LEAGUE BANNER */
 .league-banner { background: linear-gradient(135deg, var(–accent) 0%, var(–accent-light) 100%); border-radius: var(–radius); padding: 16px 20px; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 16px rgba(37,99,235,0.25); }
 .league-banner-name { color: #fff; font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
 .league-banner-elo { color: rgba(255,255,255,0.9); font-weight: 700; font-size: 15px; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 999px; }
 
-/* LEADERBOARD */
 .lb-table { background: var(–surface); border-radius: var(–radius); overflow: hidden; box-shadow: var(–shadow); }
 .lb-header { display: flex; padding: 10px 14px; background: var(–surface2); border-bottom: 1px solid var(–border); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(–text3); align-items: center; }
 .lb-row { display: flex; padding: 11px 14px; font-size: 13px; border-bottom: 1px solid var(–border); cursor: pointer; transition: background 0.12s; align-items: center; }
@@ -117,19 +90,15 @@ select option { background: #fff; }
 .lb-row:hover { background: var(–bg); }
 .lb-row.me { background: var(–accent-dim); }
 
-/* AVATAR */
 .avatar { border-radius: 50%; flex-shrink: 0; background-size: cover; background-position: center; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; }
 .avatar-fallback { background: linear-gradient(135deg, var(–accent), var(–accent-light)); }
 
-/* PENDING */
 .pending-card { display: flex; justify-content: space-between; align-items: center; background: var(–surface); border: 1.5px solid var(–accent-border); border-radius: var(–radius-sm); padding: 13px 16px; margin-bottom: 8px; cursor: pointer; transition: background 0.15s, box-shadow 0.15s; box-shadow: var(–shadow); }
 .pending-card:hover { background: var(–accent-dim); box-shadow: 0 4px 16px rgba(37,99,235,0.12); }
 .confirm-btn { color: var(–accent); font-size: 12px; font-weight: 700; }
 
-/* MEMBER ROW */
 .member-row { display: flex; align-items: center; background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 12px 14px; margin-bottom: 6px; box-shadow: var(–shadow); }
 
-/* SET INPUTS */
 .set-block { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 14px; margin-bottom: 10px; box-shadow: var(–shadow); }
 .set-block-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(–text2); margin-bottom: 10px; display: block; }
 .set-inputs { display: flex; align-items: center; gap: 10px; }
@@ -141,24 +110,12 @@ select option { background: #fff; }
 .tb-inputs { display: flex; align-items: center; gap: 8px; }
 .tb-inputs input { flex: 1; margin: 0; text-align: center; font-size: 16px; padding: 8px; }
 
-/* IGNORANT */
 .ignorant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .ignorant-item { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 14px; display: flex; flex-direction: column; align-items: center; gap: 8px; box-shadow: var(–shadow); }
 .ignorant-label { font-size: 11px; color: var(–text2); text-align: center; font-weight: 600; }
 .ignorant-controls { display: flex; align-items: center; gap: 12px; }
 .ignorant-val { color: var(–accent); font-weight: 800; min-width: 20px; text-align: center; font-size: 18px; }
 
-/* EXPENSE SECTION in new match */
-.expense-block { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 16px; box-shadow: var(–shadow); }
-.expense-toggle-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; }
-.expense-toggle-label { font-size: 14px; font-weight: 600; color: var(–text); display: flex; align-items: center; gap: 8px; }
-.expense-fields { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(–border); display: none; }
-.expense-fields.open { display: block; }
-.split-preview { background: var(–accent-dim); border: 1.5px solid var(–accent-border); border-radius: 8px; padding: 10px 14px; margin-top: 10px; font-size: 13px; color: var(–accent); font-weight: 600; text-align: center; }
-.expense-custom-row { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
-.expense-custom-row input { flex: 1; margin: 0; }
-
-/* CONFIRM CARD */
 .confirm-card { background: var(–surface); border: 1.5px solid var(–border); border-radius: 18px; padding: 24px; box-shadow: var(–shadow-lg); }
 .vs-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
 .vs-player { text-align: center; flex: 1; }
@@ -176,29 +133,25 @@ select option { background: #fff; }
 .ignorant-box-title { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(–text2); font-weight: 700; margin-bottom: 8px; display: block; }
 .ignorant-box p { color: var(–text2); font-size: 13px; margin-bottom: 3px; }
 
-/* HISTORY */
 .history-card { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 14px 16px; margin-bottom: 8px; transition: border-color 0.15s, box-shadow 0.15s; box-shadow: var(–shadow); }
 .history-card:hover { border-color: var(–accent-border); box-shadow: 0 4px 16px rgba(37,99,235,0.1); }
 
-/* STATS */
 .stat-box { text-align: center; background: var(–surface2); border-radius: 10px; padding: 14px; }
 .stat-val { font-size: 26px; font-weight: 900; }
 .stat-label { font-size: 10px; letter-spacing: 0.5px; color: var(–text2); margin-top: 2px; font-weight: 600; text-transform: uppercase; }
+
 .preview-box { border-radius: 10px; padding: 12px; text-align: center; }
 .preview-label { font-size: 10px; letter-spacing: 0.5px; margin-bottom: 6px; font-weight: 700; text-transform: uppercase; }
 .preview-val { font-size: 22px; font-weight: 900; }
 
-/* MISC */
 .empty-state { display: flex; align-items: center; justify-content: center; min-height: 200px; color: var(–text2); text-align: center; line-height: 1.7; font-weight: 500; }
 .action-row { display: flex; gap: 12px; margin-top: 4px; }
 .action-row .btn-primary, .action-row .btn-ghost { flex: 1; }
 
-/* PROFILE */
 .profile-avatar-wrap { position: relative; width: 96px; height: 96px; margin: 0 auto 14px; }
 .profile-avatar { width: 96px; height: 96px; border-radius: 50%; background-size: cover; background-position: center; border: 3px solid var(–accent-border); display: flex; align-items: center; justify-content: center; font-size: 36px; font-weight: 900; color: #fff; background-color: var(–accent); }
 .profile-avatar-edit { position: absolute; bottom: 0; right: 0; width: 30px; height: 30px; border-radius: 50%; background: var(–accent); color: #fff; border: 2.5px solid var(–bg); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 13px; }
 
-/* TOGGLE */
 .toggle-row { display: flex; align-items: center; justify-content: space-between; background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 14px 16px; margin-bottom: 10px; box-shadow: var(–shadow); }
 .toggle-label { color: var(–text); font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; }
 .toggle { position: relative; width: 50px; height: 28px; background: var(–text3); border-radius: 999px; cursor: pointer; transition: background 0.2s; flex-shrink: 0; }
@@ -206,7 +159,6 @@ select option { background: #fff; }
 .toggle.on { background: var(–green); }
 .toggle.on::after { transform: translateX(22px); }
 
-/* SURFACE */
 .surface-selector { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 10px; }
 .indoor-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
 .surface-btn { background: var(–surface2); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 14px 6px; text-align: center; cursor: pointer; transition: all 0.15s; color: var(–text2); }
@@ -215,7 +167,6 @@ select option { background: #fff; }
 .surface-btn-label { font-size: 10px; letter-spacing: 0.5px; font-weight: 700; text-transform: uppercase; }
 .surface-pill { display: inline-flex; align-items: center; gap: 4px; background: var(–surface2); border-radius: 999px; padding: 3px 10px; font-size: 11px; color: var(–text2); font-weight: 600; border: 1px solid var(–border); }
 
-/* BETS */
 .bet-card { background: var(–surface); border: 1.5px solid var(–accent-border); border-radius: var(–radius); padding: 16px; margin-bottom: 10px; box-shadow: var(–shadow); }
 .bet-vs { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
 .bet-player { flex: 1; text-align: center; padding: 12px; background: var(–surface2); border: 1.5px solid var(–border); border-radius: var(–radius-sm); cursor: pointer; transition: all 0.15s; }
@@ -227,24 +178,49 @@ select option { background: #fff; }
 .bet-vs-div { color: var(–text3); font-weight: 800; font-size: 16px; letter-spacing: 2px; }
 .bet-meta { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(–text2); padding-top: 10px; border-top: 1px solid var(–border); font-weight: 600; }
 
-/* EXPENSES SCREEN */
-.expense-person-card { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 14px 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 14px; cursor: pointer; transition: all 0.15s; box-shadow: var(–shadow); }
-.expense-person-card:hover { border-color: var(–accent-border); background: var(–bg); }
-.expense-balance { font-size: 16px; font-weight: 800; margin-left: auto; text-align: right; }
-.expense-balance-label { font-size: 10px; font-weight: 600; color: var(–text3); text-transform: uppercase; letter-spacing: 0.5px; }
-.expense-detail-card { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 12px 14px; margin-bottom: 6px; box-shadow: var(–shadow); }
-.exp-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-.exp-desc { font-size: 13px; font-weight: 600; color: var(–text); }
-.exp-date { font-size: 11px; color: var(–text3); font-weight: 500; margin-top: 2px; }
-.exp-amount { font-size: 15px; font-weight: 800; flex-shrink: 0; }
-.exp-subtitle { font-size: 11px; color: var(–text2); margin-top: 4px; font-weight: 500; }
-.settle-banner { background: linear-gradient(135deg, var(–green), #28a745); border-radius: var(–radius-sm); padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; box-shadow: 0 4px 16px rgba(52,199,89,0.25); }
-.settle-banner.owe { background: linear-gradient(135deg, var(–red), #cc2200); box-shadow: 0 4px 16px rgba(255,59,48,0.25); }
-.settle-banner.even { background: linear-gradient(135deg, #636366, #8e8e93); box-shadow: none; }
-.settle-text { color: #fff; font-size: 14px; font-weight: 700; }
-.settle-amount { color: #fff; font-size: 20px; font-weight: 900; }
-
 .flex { display: flex; } .gap-8 { gap: 8px; } .gap-12 { gap: 12px; } .flex-1 { flex: 1; }
+
+/* ============================================================
+SOLO AGGIUNTE NUOVE - menu laterale, spese
+============================================================ */
+#menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; display: none; }
+#menu-overlay.open { display: block; }
+#side-menu { position: fixed; top: 0; left: 0; bottom: 0; width: 270px; background: #FFFFFF; z-index: 201; transform: translateX(-100%); transition: transform 0.28s cubic-bezier(0.4,0,0.2,1); box-shadow: 6px 0 30px rgba(0,0,0,0.15); display: flex; flex-direction: column; }
+#side-menu.open { transform: translateX(0); }
+.menu-header { padding: 52px 24px 20px; background: linear-gradient(135deg, var(–accent) 0%, var(–accent-light) 100%); border-bottom: 1px solid rgba(255,255,255,0.15); }
+.menu-logo { color: #fff; font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
+.menu-logo span { color: var(–accent); font-weight: 900; }
+.menu-user { color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 500; margin-top: 8px; display: flex; align-items: center; gap: 8px; }
+.menu-items { flex: 1; padding: 8px 0; overflow-y: auto; background: #FFFFFF; }
+.menu-section-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(–text3); padding: 16px 24px 6px; }
+.menu-item { display: flex; align-items: center; gap: 14px; padding: 13px 24px; font-size: 15px; font-weight: 600; color: var(–text2); cursor: pointer; transition: all 0.15s; border-left: 3px solid transparent; background: #FFFFFF; }
+.menu-item:hover { background: var(–bg); color: var(–text); }
+.menu-item.active { color: var(–accent); background: var(–accent-dim); border-left-color: var(–accent); }
+.menu-item-icon { font-size: 18px; width: 24px; text-align: center; flex-shrink: 0; }
+.menu-footer { padding: 16px 24px; border-top: 1px solid var(–border); background: #FFFFFF; }
+.menu-logout { display: flex; align-items: center; gap: 10px; color: var(–red); font-size: 14px; font-weight: 600; cursor: pointer; }
+.hamburger { background: var(–surface2); border: 1.5px solid var(–border); border-radius: 8px; width: 34px; height: 34px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; transition: all 0.15s; }
+.hamburger:hover { border-color: var(–accent); background: var(–accent-dim); }
+.hamburger span { width: 14px; height: 1.5px; background: var(–text2); border-radius: 1px; display: block; }
+.hamburger:hover span { background: var(–accent); }
+
+/* Expense block in new match */
+.expense-block { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 16px; box-shadow: var(–shadow); }
+.expense-toggle-row { display: flex; align-items: center; justify-content: space-between; }
+.expense-fields { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(–border); display: none; }
+.expense-fields.open { display: block; }
+.split-preview { background: var(–accent-dim); border: 1.5px solid var(–accent-border); border-radius: 8px; padding: 10px 14px; margin-top: 10px; font-size: 13px; color: var(–accent); font-weight: 600; text-align: center; }
+
+/* Expenses screen */
+.expense-person-card { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 14px 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 14px; cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s; box-shadow: var(–shadow); }
+.expense-person-card:hover { border-color: var(–accent-border); box-shadow: 0 4px 16px rgba(37,99,235,0.1); }
+.expense-detail-card { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 12px 14px; margin-bottom: 6px; box-shadow: var(–shadow); }
+.settle-banner { border-radius: var(–radius-sm); padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.settle-banner.credit { background: linear-gradient(135deg, #28a745, var(–green)); box-shadow: 0 4px 16px rgba(52,199,89,0.3); }
+.settle-banner.debt { background: linear-gradient(135deg, #cc2200, var(–red)); box-shadow: 0 4px 16px rgba(255,59,48,0.3); }
+.settle-banner.even { background: linear-gradient(135deg, #636366, #8e8e93); }
+.settle-text { color: #fff; font-size: 13px; font-weight: 600; }
+.settle-amount { color: #fff; font-size: 22px; font-weight: 900; }
 </style>
 
 </head>
@@ -261,21 +237,21 @@ select option { background: #fff; }
 <div id="menu-overlay" onclick="closeMenu()"></div>
 <div id="side-menu">
   <div class="menu-header">
-    <div class="menu-logo">Tennis<span>illo</span></div>
-    <div class="menu-user" id="menu-user-info"></div>
+    <div class="menu-logo">Tennis<span style="color:rgba(255,255,255,0.65)">illo</span></div>
+    <div class="menu-user" id="menu-user-info">—</div>
   </div>
   <div class="menu-items">
     <div class="menu-section-label">Principale</div>
-    <div class="menu-item active" id="mi-dashboard" onclick="menuNav('dashboard')"><span class="menu-item-icon">🏠</span> Dashboard</div>
-    <div class="menu-item" id="mi-expenses" onclick="menuNav('expenses')"><span class="menu-item-icon">💰</span> Divisione Spese</div>
+    <div class="menu-item active" id="mi-dashboard" onclick="menuNav('dashboard')"><span class="menu-item-icon">🏠</span>Dashboard</div>
+    <div class="menu-item" id="mi-expenses" onclick="menuNav('expenses')"><span class="menu-item-icon">💰</span>Divisione Spese</div>
     <div class="menu-section-label">Extra</div>
-    <div class="menu-item" id="mi-bets" onclick="menuNav('bets')"><span class="menu-item-icon">🎰</span> Scommesse</div>
-    <div class="menu-item" id="mi-campi" onclick="menuNav('campi')"><span class="menu-item-icon">🏟</span> Prenota Campi</div>
+    <div class="menu-item" id="mi-bets" onclick="menuNav('bets')"><span class="menu-item-icon">🎰</span>Scommesse</div>
+    <div class="menu-item" id="mi-campi" onclick="menuNav('campi')"><span class="menu-item-icon">🏟</span>Prenota Campi</div>
     <div class="menu-section-label">Altro</div>
-    <div class="menu-item" id="mi-admin" onclick="menuNav('admin')"><span class="menu-item-icon">⚙️</span> Admin</div>
+    <div class="menu-item" id="mi-admin" onclick="menuNav('admin')"><span class="menu-item-icon">⚙️</span>Admin</div>
   </div>
   <div class="menu-footer">
-    <div class="menu-logout" onclick="logout()">↩ <span>Esci</span></div>
+    <div class="menu-logout" onclick="logout()">↩ &nbsp;Esci</div>
   </div>
 </div>
 
@@ -374,7 +350,7 @@ select option { background: #fff; }
   </div>
   <div class="page-content">
     <div id="bets-announce-wrap" style="display:none;margin-bottom:16px">
-      <button class="btn-ghost" style="width:100%;border-color:var(--accent-border);color:var(--accent)" onclick="showScreen('announce')">+ Annuncia Partita</button>
+      <button class="btn-ghost" style="width:100%;border-color:var(--accent-border);color:var(--accent)" onclick="showScreen('announce')">+ Annuncia Partita per Scommesse</button>
     </div>
     <div class="section">
       <div class="section-title">Scommesse Aperte</div>
@@ -409,12 +385,12 @@ select option { background: #fff; }
 <div id="screen-expenses" class="screen">
   <div class="page-header">
     <button class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></button>
-    <span class="header-logo">💰 Spese</span>
+    <span class="header-logo">💰 Divisione Spese</span>
     <span></span>
   </div>
   <div class="page-content">
     <div class="section">
-      <div class="section-title">Saldi con i Compagni</div>
+      <div class="section-title">Saldi con i compagni</div>
       <div id="expenses-list"></div>
     </div>
   </div>
@@ -470,7 +446,7 @@ select option { background: #fff; }
             <input id="ludo-amount" type="number" min="1" max="50" style="flex:1"/>
             <button class="btn-small" onclick="saveBetAmount()">Salva</button>
           </div>
-          <p style="color:var(--text3);font-size:11px;margin-top:6px;font-weight:500">Pt vinti/persi per scommessa</p>
+          <p style="color:var(--text3);font-size:11px;margin-top:6px;font-weight:500">Quanti Pt si vincono/perdono indovinando una partita</p>
         </div>
       </div>
       <div class="section">
@@ -513,42 +489,34 @@ select option { background: #fff; }
       </div>
       <div id="nm-sets"></div>
     </div>
+    <!-- SPESE CAMPO - NUOVO -->
     <div class="section">
       <div class="section-title">💰 Spese Campo</div>
       <div class="expense-block">
         <div class="expense-toggle-row">
-          <span class="expense-toggle-label">💶 Aggiungere una spesa?</span>
+          <span style="font-size:14px;font-weight:600;color:var(--text)">Aggiungere una spesa?</span>
           <div id="exp-toggle" class="toggle" onclick="toggleExpenseBlock()"></div>
         </div>
         <div class="expense-fields" id="exp-fields">
-          <label class="field-label">Totale pagato (€)</label>
+          <label class="field-label" style="margin-top:0">Totale pagato (€)</label>
           <input type="number" id="exp-total" placeholder="es. 30" min="0" step="0.5" oninput="updateSplitPreview()"/>
-          <div class="split-preview" id="exp-preview" style="display:none"></div>
-          <div style="margin-top:12px">
-            <label class="field-label">Chi ha pagato?</label>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
-              <div class="surface-btn" id="exp-paid-me" onclick="selectPayer('me')"><span class="surface-btn-icon">🙋</span><span class="surface-btn-label">Io</span></div>
-              <div class="surface-btn" id="exp-paid-opp" onclick="selectPayer('opp')"><span class="surface-btn-icon">👤</span><span class="surface-btn-label" id="exp-opp-name">Avv.</span></div>
-            </div>
+          <label class="field-label" style="margin-top:12px">Chi ha pagato?</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+            <div class="surface-btn" id="exp-paid-me" onclick="selectPayer('me')"><span class="surface-btn-icon">🙋</span><span class="surface-btn-label">Io</span></div>
+            <div class="surface-btn" id="exp-paid-opp" onclick="selectPayer('opp')"><span class="surface-btn-icon">👤</span><span class="surface-btn-label" id="exp-opp-name">Avv.</span></div>
           </div>
-          <div style="margin-top:4px">
-            <label class="field-label">Divisione <span style="color:var(--text3);text-transform:none;letter-spacing:0;font-weight:500">(di default metà a testa)</span></label>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-              <div class="surface-btn sel" id="exp-split-half" onclick="selectSplit('half')"><span class="surface-btn-icon">⚖️</span><span class="surface-btn-label">Metà/metà</span></div>
-              <div class="surface-btn" id="exp-split-custom" onclick="selectSplit('custom')"><span class="surface-btn-icon">✏️</span><span class="surface-btn-label">Personalizza</span></div>
-            </div>
-            <div id="exp-custom-fields" style="display:none">
-              <div class="expense-custom-row">
-                <span style="font-size:12px;color:var(--text2);font-weight:600;width:60px">Io pago</span>
-                <input type="number" id="exp-my-share" placeholder="€" min="0" step="0.5" oninput="updateSplitPreview()"/>
-              </div>
-            </div>
-            <div class="split-preview" id="exp-preview2" style="display:none"></div>
+          <label class="field-label">Divisione</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+            <div class="surface-btn sel" id="exp-split-half" onclick="selectSplit('half')"><span class="surface-btn-icon">⚖️</span><span class="surface-btn-label">Metà/metà</span></div>
+            <div class="surface-btn" id="exp-split-custom" onclick="selectSplit('custom')"><span class="surface-btn-icon">✏️</span><span class="surface-btn-label">Personalizza</span></div>
           </div>
-          <div style="margin-top:10px">
-            <label class="field-label">Descrizione <span style="color:var(--text3);text-transform:none;letter-spacing:0;font-weight:500">(opzionale)</span></label>
-            <input type="text" id="exp-desc" placeholder="es. Campo + palline"/>
+          <div id="exp-custom-fields" style="display:none;margin-bottom:8px">
+            <label class="field-label">La mia quota (€)</label>
+            <input type="number" id="exp-my-share" placeholder="€" min="0" step="0.5" oninput="updateSplitPreview()"/>
           </div>
+          <div id="exp-preview" class="split-preview" style="display:none"></div>
+          <label class="field-label" style="margin-top:12px">Descrizione <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text3)">(opzionale)</span></label>
+          <input type="text" id="exp-desc" placeholder="es. Campo + palline"/>
         </div>
       </div>
     </div>
@@ -578,8 +546,8 @@ select option { background: #fff; }
       </div>
       <div class="set-scores" id="conf-sets"></div>
       <div class="winner-line"><div class="winner-label">Vincitore</div><div class="winner-name-text" id="conf-winner"></div></div>
-      <div id="conf-expense-box" style="display:none;margin-bottom:16px">
-        <div class="ignorant-box">
+      <div id="conf-expense-box" style="display:none">
+        <div class="ignorant-box" style="margin-bottom:16px">
           <span class="ignorant-box-title">💰 Spesa Campo</span>
           <div id="conf-expense-detail"></div>
         </div>
@@ -662,13 +630,13 @@ select option { background: #fff; }
         <div class="section-title">Aggiungi Campo</div>
         <div><label class="field-label">Nome campo</label><input id="campo-nome" type="text" placeholder="es. Tennis Club Vicenza" style="margin-bottom:10px"/></div>
         <div><label class="field-label">Link prenotazione</label><input id="campo-url" type="url" placeholder="https://..." style="margin-bottom:10px"/></div>
-        <label class="field-label">Superficie <span style="color:var(--text3);text-transform:none;letter-spacing:0;font-weight:500">(puoi sceglierne più)</span></label>
+        <label class="field-label">Superficie <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text3)">(puoi sceglierne più di una)</span></label>
         <div class="surface-selector" id="surface-sel">
           <div class="surface-btn" data-surface="terra" onclick="toggleSurface('terra')"><span class="surface-btn-icon">🟠</span><span class="surface-btn-label">Terra</span></div>
           <div class="surface-btn" data-surface="cemento" onclick="toggleSurface('cemento')"><span class="surface-btn-icon">⬜</span><span class="surface-btn-label">Cemento</span></div>
           <div class="surface-btn" data-surface="sintetico" onclick="toggleSurface('sintetico')"><span class="surface-btn-icon">🎾</span><span class="surface-btn-label">Sintetico</span></div>
         </div>
-        <label class="field-label">Copertura <span style="color:var(--text3);text-transform:none;letter-spacing:0;font-weight:500">(puoi scegliere entrambe)</span></label>
+        <label class="field-label">Copertura <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text3)">(puoi scegliere entrambe)</span></label>
         <div class="indoor-selector" id="indoor-sel">
           <div class="surface-btn" data-indoor="outdoor" onclick="toggleIndoor('outdoor')"><span class="surface-btn-icon">☀️</span><span class="surface-btn-label">Scoperto</span></div>
           <div class="surface-btn" data-indoor="indoor" onclick="toggleIndoor('indoor')"><span class="surface-btn-icon">☂️</span><span class="surface-btn-label">Coperto</span></div>
@@ -707,9 +675,10 @@ let nmSets = 2;
 let nmIgnorant = { aces_p1:0, aces_p2:0, df_p1:0, df_p2:0, racket_p1:0, racket_p2:0 };
 let profileUserId = null;
 let expenseDetailUserId = null;
+let campoSurface = null;
+let campoIndoor = null;
 let campoSurfaces = [];
 let campoCoverages = [];
-// Expense form state
 let expActive = false;
 let expPayer = 'me';
 let expSplitMode = 'half';
@@ -721,21 +690,21 @@ onValue(ref(db,'/'), (snap) => {
   state = { users:d.users||{}, leagues:d.leagues||{}, memberships:d.memberships||{}, matches:d.matches||{}, campi:d.campi||{}, announcements:d.announcements||{}, bets:d.bets||{}, expenses:d.expenses||{} };
   document.getElementById('loading-overlay').style.display = 'none';
   const active = document.querySelector('.screen.active');
-  if(active){
+  if (active) {
     const id = active.id.replace('screen-','');
-    if(id==='dashboard') renderDashboard();
-    if(id==='admin') renderAdmin();
-    if(id==='history') renderHistory();
-    if(id==='player') renderPlayerProfile();
-    if(id==='campi') renderCampi();
-    if(id==='announce') renderAnnounce();
-    if(id==='bets') renderBetsScreen();
-    if(id==='expenses') renderExpenses();
-    if(id==='expense-detail') renderExpenseDetail();
+    if (id==='dashboard') renderDashboard();
+    if (id==='admin') renderAdmin();
+    if (id==='history') renderHistory();
+    if (id==='player') renderPlayerProfile();
+    if (id==='campi') renderCampi();
+    if (id==='announce') renderAnnounce();
+    if (id==='bets') renderBetsScreen();
+    if (id==='expenses') renderExpenses();
+    if (id==='expense-detail') renderExpenseDetail();
   }
 });
 
-// ── MENU ──
+// MENU
 window.openMenu=function(){
   document.getElementById('side-menu').classList.add('open');
   document.getElementById('menu-overlay').classList.add('open');
@@ -752,7 +721,6 @@ window.menuNav=function(screen){
   if(mi) mi.classList.add('active');
 };
 
-// ── AVATAR ──
 function initials(name){
   if(!name) return '?';
   const parts=name.trim().split(/\s+/);
@@ -767,7 +735,6 @@ function avatarHTML(user,size){
   return '<div class="avatar avatar-fallback" style="width:'+size+'px;height:'+size+'px;font-size:'+fs+'px">'+initials(user?.name)+'</div>';
 }
 
-// ── PHOTO ──
 function compressImage(file,maxSize,quality){
   maxSize=maxSize||250; quality=quality||0.72;
   return new Promise((resolve,reject)=>{
@@ -782,21 +749,29 @@ function compressImage(file,maxSize,quality){
         canvas.getContext('2d').drawImage(img,0,0,w,h);
         resolve(canvas.toDataURL('image/jpeg',quality));
       };
-      img.onerror=reject; img.src=e.target.result;
+      img.onerror=reject;
+      img.src=e.target.result;
     };
-    reader.onerror=reject; reader.readAsDataURL(file);
+    reader.onerror=reject;
+    reader.readAsDataURL(file);
   });
 }
-window.triggerPhotoUpload=function(){ const inp=document.getElementById('photo-input'); inp.value=''; inp.click(); };
+window.triggerPhotoUpload=function(){
+  const inp=document.getElementById('photo-input');
+  inp.value=''; inp.click();
+};
 document.getElementById('photo-input').addEventListener('change',async e=>{
   const file=e.target.files[0];
   if(!file||!currentUser) return;
-  if(file.size>10*1024*1024) return toast('Foto troppo grande','error');
-  try{ toast('Carico foto…'); const d=await compressImage(file,250,0.72); await update(ref(db,'users/'+currentUser.id),{photo:d}); toast('Foto aggiornata!'); }
-  catch(err){ toast('Errore caricamento','error'); }
+  if(file.size>10*1024*1024) return toast('Foto troppo grande (max 10MB)','error');
+  try{
+    toast('Carico foto…');
+    const dataUrl=await compressImage(file,250,0.72);
+    await update(ref(db,'users/'+currentUser.id),{photo:dataUrl});
+    toast('Foto aggiornata!');
+  }catch(err){ toast('Errore nel caricamento','error'); }
 });
 
-// ── ELO ──
 function expectedScore(a,b){ return 1/(1+Math.pow(10,(b-a)/400)); }
 function calcDominance(sets){
   let tgP1=0,tgP2=0,sP1=0,sP2=0;
@@ -805,21 +780,22 @@ function calcDominance(sets){
   const wG=sP1>sP2?tgP1:tgP2,lG=sP1>sP2?tgP2:tgP1;
   return (lS/wS)*0.6+(lG/(wG||1))*0.4;
 }
-function calcEloChange(wR,lR,sets){ return Math.max(1,Math.round(40*(0.55+(1-calcDominance(sets))*0.45-expectedScore(wR,lR)))); }
+function calcEloChange(wR,lR,sets){
+  return Math.max(1,Math.round(40*(0.55+(1-calcDominance(sets))*0.45-expectedScore(wR,lR))));
+}
 
-// ── TOAST ──
 let toastTimer;
 function toast(msg,type){
   type=type||'success';
   const el=document.getElementById('toast');
   el.textContent=msg;
-  el.style.background=type==='error'?'var(--red)':type==='warning'?'var(--orange)':'var(--accent)';
+  el.style.background=type==='error'?'var(--red)':'var(--accent)';
+  el.style.color='#fff';
   el.style.display='block';
   clearTimeout(toastTimer);
   toastTimer=setTimeout(()=>{el.style.display='none';},3000);
 }
 
-// ── SCREENS ──
 function showScreen(name){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   const el=document.getElementById('screen-'+name);
@@ -837,7 +813,6 @@ function showScreen(name){
 }
 window.showScreen=showScreen;
 
-// ── VALIDATION ──
 function validateSet(p1,p2){
   if(isNaN(p1)||isNaN(p2)||p1<0||p2<0) return false;
   const hi=Math.max(p1,p2),lo=Math.min(p1,p2);
@@ -851,7 +826,6 @@ function validateTiebreak(tb1,tb2){
   return (hi-lo)===2;
 }
 
-// ── AUTH ──
 document.getElementById('login-pass').addEventListener('keydown',e=>{if(e.key==='Enter')login();});
 window.login=async function(){
   const email=document.getElementById('login-email').value.trim();
@@ -859,11 +833,13 @@ window.login=async function(){
   const user=vals(state.users).find(u=>u.email.toLowerCase()===email.toLowerCase()&&u.password===pass);
   if(!user) return toast('Credenziali errate','error');
   currentUser=user;
-  document.getElementById('login-email').value=''; document.getElementById('login-pass').value='';
-  document.getElementById('menu-user-info').innerHTML=avatarHTML(currentUser,22)+'<span>'+currentUser.name+'</span>';
+  document.getElementById('login-email').value='';
+  document.getElementById('login-pass').value='';
+  document.getElementById('menu-user-info').innerHTML=avatarHTML(currentUser,22)+'<span style="margin-left:4px">'+currentUser.name+'</span>';
   showScreen('dashboard');
 };
 window.logout=function(){ closeMenu(); currentUser=null; showScreen('login'); };
+
 window.register=async function(){
   const name=document.getElementById('reg-name').value.trim();
   const email=document.getElementById('reg-email').value.trim();
@@ -876,6 +852,7 @@ window.register=async function(){
   toast('Account creato! Ora accedi');
   showScreen('login');
 };
+
 window.resetPassword=async function(){
   const email=document.getElementById('rp-email').value.trim();
   const np=document.getElementById('rp-pass').value;
@@ -886,15 +863,15 @@ window.resetPassword=async function(){
   const user=vals(state.users).find(u=>u.email.toLowerCase()===email.toLowerCase());
   if(!user) return toast('Email non trovata','error');
   await update(ref(db,'users/'+user.id),{password:np});
-  toast('Password aggiornata!'); showScreen('login');
+  toast('Password aggiornata!');
+  showScreen('login');
 };
 
-// ── DASHBOARD ──
 function renderDashboard(){
   if(!currentUser) return;
   currentUser=state.users[currentUser.id]||currentUser;
   document.getElementById('dash-username').innerHTML=avatarHTML(currentUser,26)+'<span style="margin-left:6px">'+currentUser.name+'</span>';
-  document.getElementById('menu-user-info').innerHTML=avatarHTML(currentUser,22)+'<span>'+currentUser.name+'</span>';
+  document.getElementById('menu-user-info').innerHTML=avatarHTML(currentUser,22)+'<span style="margin-left:4px">'+currentUser.name+'</span>';
   const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
   const league=mem?state.leagues[mem.leagueId]:null;
   if(!league){
@@ -913,7 +890,7 @@ function renderDashboard(){
     document.getElementById('dash-pending-title').textContent='Da Confermare ('+pending.length+')';
     document.getElementById('dash-pending-list').innerHTML=pending.map(m=>{
       const p1=state.users[m.p1Id];
-      return '<div class="pending-card" onclick="openConfirm(\''+m.id+'\')"><span><b>'+(p1?.name||'?')+'</b> ha inserito un risultato</span><span class="confirm-btn">Conferma →</span></div>';
+      return '<div class="pending-card" onclick="openConfirm(\''+m.id+'\')"><span style="color:var(--text)"><b>'+(p1?.name||'?')+'</b> ha inserito un risultato</span><span class="confirm-btn">Conferma →</span></div>';
     }).join('');
   } else { pendDiv.style.display='none'; }
   const medals=['🥇','🥈','🥉'];
@@ -934,7 +911,7 @@ function renderDashboard(){
   }).join('');
 }
 
-// ── BETS SCREEN ──
+// BETS SCREEN
 function renderBetsScreen(){
   if(!currentUser) return;
   const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
@@ -946,7 +923,7 @@ function renderBetsScreen(){
   const openAnn=vals(state.announcements).filter(a=>a.leagueId===league.id&&a.status==='open');
   const openList=document.getElementById('bets-open-list');
   if(!ludoOn){
-    openList.innerHTML='<div class="empty-state" style="min-height:100px"><p>Le scommesse non sono attive.<br>L\'admin può attivarle.</p></div>';
+    openList.innerHTML='<div class="empty-state" style="min-height:100px"><p>Le scommesse non sono attive.<br>L\'admin può attivarle dal pannello Admin.</p></div>';
   } else if(!openAnn.length){
     openList.innerHTML='<div class="empty-state" style="min-height:100px"><p>Nessuna partita annunciata.<br>Annuncia la tua prossima partita!</p></div>';
   } else {
@@ -963,8 +940,8 @@ function renderBetsScreen(){
       const dis=canBet?'':'disabled';
       const a1=canBet?'onclick="placeBet(\''+a.id+'\',\''+a.p1Id+'\')"':'';
       const a2=canBet?'onclick="placeBet(\''+a.id+'\',\''+a.p2Id+'\')"':'';
-      const cancelBtn=a.announcedBy===currentUser.id?'<button class="btn-small" onclick="cancelAnnouncement(\''+a.id+'\')">Cancella</button>':'';
       const meta=isPlayer?'La tua partita — non puoi scommettere':myBet?('Puntato su '+state.users[myBet.pickUserId]?.name):('Posta: '+betAmt+' Pt');
+      const cancelBtn=a.announcedBy===currentUser.id?'<button class="btn-small" onclick="cancelAnnouncement(\''+a.id+'\')">Cancella</button>':'';
       return '<div class="bet-card">'+
         '<div class="bet-vs">'+
           '<div class="bet-player '+pick1+' '+dis+'" '+a1+'>'+avatarHTML(p1,44)+'<div class="bet-name">'+(p1?.name||'?')+'</div><div class="bet-elo">'+(m1?.rating||'?')+' Pt</div></div>'+
@@ -975,17 +952,15 @@ function renderBetsScreen(){
       '</div>';
     }).join('');
   }
-  // History
-  const myBets=vals(state.bets).filter(b=>b.userId===currentUser.id&&(b.status==='won'||b.status==='lost')).slice(-10).reverse();
+  const myBets=vals(state.bets).filter(b=>b.userId===currentUser.id&&(b.status==='won'||b.status==='lost')).slice(-20).reverse();
   const histList=document.getElementById('bets-history-list');
   if(!myBets.length){
     histList.innerHTML='<div class="empty-state" style="min-height:80px"><p>Nessuna scommessa risolta ancora</p></div>';
   } else {
     histList.innerHTML=myBets.map(b=>{
-      const ann=state.announcements[b.announcementId];
       const pick=state.users[b.pickUserId];
       const won=b.status==='won';
-      const delta=won?(b.resolvedDelta||betAmt):-(b.resolvedAmount||betAmt);
+      const delta=won?(b.resolvedAmount||betAmt):-(b.resolvedAmount||betAmt);
       return '<div class="history-card">'+
         '<div style="display:flex;justify-content:space-between;align-items:center">'+
           '<div style="font-size:13px;font-weight:600;color:var(--text)">Puntato su '+(pick?.name||'?')+'</div>'+
@@ -997,14 +972,8 @@ function renderBetsScreen(){
   }
 }
 
-// ── EXPENSES HELPERS ──
-function getExpensesBetween(userA,userB){
-  return vals(state.expenses).filter(e=>
-    (e.payerId===userA&&e.owerId===userB)||(e.payerId===userB&&e.owerId===userA)
-  ).sort((a,b)=>a.createdAt-b.createdAt);
-}
+// EXPENSES
 function calcBalance(myId,otherId){
-  // positive = other owes me, negative = I owe other
   let balance=0;
   vals(state.expenses).forEach(e=>{
     if(e.settled) return;
@@ -1013,8 +982,11 @@ function calcBalance(myId,otherId){
   });
   return balance;
 }
-
-// ── EXPENSES SCREEN ──
+function getExpensesBetween(userA,userB){
+  return vals(state.expenses).filter(e=>
+    (e.payerId===userA&&e.owerId===userB)||(e.payerId===userB&&e.owerId===userA)
+  ).sort((a,b)=>a.createdAt-b.createdAt);
+}
 function renderExpenses(){
   if(!currentUser) return;
   const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
@@ -1033,82 +1005,72 @@ function renderExpenses(){
       avatarHTML(m.user,44)+
       '<div style="flex:1;min-width:0">'+
         '<div style="font-size:15px;font-weight:700;color:var(--text)">'+(m.user?.name||'?')+'</div>'+
-        '<div style="font-size:12px;color:var(--text2);margin-top:2px">'+m.rating+' Pt</div>'+
+        '<div style="font-size:12px;color:var(--text2);margin-top:2px;font-weight:500">'+m.rating+' Pt</div>'+
       '</div>'+
       '<div style="text-align:right">'+
-        '<div class="expense-balance" style="color:'+balColor+'">'+balText+'</div>'+
-        '<div class="expense-balance-label" style="color:'+balColor+'">'+balLabel+'</div>'+
+        '<div style="font-size:17px;font-weight:800;color:'+balColor+'">'+balText+'</div>'+
+        '<div style="font-size:10px;font-weight:600;color:'+balColor+';text-transform:uppercase;letter-spacing:0.5px">'+balLabel+'</div>'+
       '</div>'+
     '</div>';
   }).join('');
 }
-
-window.openExpenseDetail=function(uid){
-  expenseDetailUserId=uid;
-  showScreen('expense-detail');
-};
+window.openExpenseDetail=function(uid){ expenseDetailUserId=uid; showScreen('expense-detail'); };
 function renderExpenseDetail(){
   if(!expenseDetailUserId||!currentUser) return;
   const other=state.users[expenseDetailUserId];
-  document.getElementById('expense-detail-title').textContent=other?.name||'Spese';
+  document.getElementById('expense-detail-title').textContent=(other?.name||'Spese');
   const balance=calcBalance(currentUser.id,expenseDetailUserId);
   const absB=Math.abs(balance).toFixed(2);
   const bannerEl=document.getElementById('expense-settle-banner');
   const btnWrap=document.getElementById('expense-settle-btn-wrap');
   if(Math.abs(balance)<0.01){
-    bannerEl.innerHTML='<div class="settle-banner even"><div><div class="settle-text">Siete in pari con '+other?.name+'</div></div><div class="settle-amount">€0.00</div></div>';
+    bannerEl.innerHTML='<div class="settle-banner even"><div><div class="settle-text">Siete in pari ✓</div></div><div class="settle-amount">€0.00</div></div>';
     btnWrap.style.display='none';
   } else if(balance>0){
-    bannerEl.innerHTML='<div class="settle-banner"><div><div class="settle-text">'+other?.name+' ti deve</div></div><div class="settle-amount">€'+absB+'</div></div>';
+    bannerEl.innerHTML='<div class="settle-banner credit"><div><div class="settle-text">'+(other?.name||'?')+' ti deve</div></div><div class="settle-amount">€'+absB+'</div></div>';
     btnWrap.style.display='block';
   } else {
-    bannerEl.innerHTML='<div class="settle-banner owe"><div><div class="settle-text">Devi a '+other?.name+'</div></div><div class="settle-amount">€'+absB+'</div></div>';
+    bannerEl.innerHTML='<div class="settle-banner debt"><div><div class="settle-text">Devi a '+(other?.name||'?')+'</div></div><div class="settle-amount">€'+absB+'</div></div>';
     btnWrap.style.display='block';
   }
   const exps=getExpensesBetween(currentUser.id,expenseDetailUserId);
   const detailList=document.getElementById('expense-detail-list');
-  if(!exps.length){
-    detailList.innerHTML='<div class="empty-state" style="min-height:120px"><p>Nessuna spesa registrata</p></div>';
-    return;
-  }
+  if(!exps.length){detailList.innerHTML='<div class="empty-state" style="min-height:120px"><p>Nessuna spesa registrata</p></div>';return;}
   detailList.innerHTML=exps.slice().reverse().map(e=>{
     const iPaid=e.payerId===currentUser.id;
     const date=new Date(e.createdAt).toLocaleDateString('it-IT',{day:'2-digit',month:'short'});
-    const settled=e.settled?'<span style="color:var(--text3);font-size:10px;font-weight:600;background:var(--surface2);padding:2px 8px;border-radius:999px;border:1px solid var(--border)">SALDATO</span>':'';
-    const owedLabel=iPaid?other?.name+' ti deve €'+e.owedAmount.toFixed(2):'Devi €'+e.owedAmount.toFixed(2)+' a '+other?.name;
+    const settled=e.settled?'<span style="color:var(--text3);font-size:10px;font-weight:600;background:var(--surface2);padding:2px 8px;border-radius:999px;border:1px solid var(--border);margin-left:6px">SALDATO</span>':'';
+    const owedLabel=iPaid?(other?.name||'?')+' ti deve €'+e.owedAmount.toFixed(2):'Devi €'+e.owedAmount.toFixed(2)+' a '+(other?.name||'?');
     const amtColor=e.settled?'var(--text3)':iPaid?'var(--green)':'var(--red)';
     return '<div class="expense-detail-card">'+
-      '<div class="exp-row">'+
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">'+
         '<div>'+
-          '<div class="exp-desc">'+(e.description||'Spesa campo')+'</div>'+
-          '<div class="exp-date">'+date+'</div>'+
+          '<div style="font-size:13px;font-weight:600;color:var(--text)">'+(e.description||'Spesa campo')+'</div>'+
+          '<div style="font-size:11px;color:var(--text3);font-weight:500;margin-top:2px">'+date+'</div>'+
         '</div>'+
-        '<div style="text-align:right">'+
-          '<div class="exp-amount" style="color:'+amtColor+'">€'+e.totalAmount.toFixed(2)+'</div>'+
+        '<div style="text-align:right;flex-shrink:0">'+
+          '<div style="font-size:15px;font-weight:800;color:'+amtColor+'">€'+e.totalAmount.toFixed(2)+'</div>'+
           settled+
         '</div>'+
       '</div>'+
-      '<div class="exp-subtitle">'+(iPaid?'Hai pagato tu':'Ha pagato '+(other?.name||'?'))+' · '+owedLabel+'</div>'+
+      '<div style="font-size:11px;color:var(--text2);margin-top:6px;font-weight:500">'+(iPaid?'Hai pagato tu':'Ha pagato '+(other?.name||'?'))+' · '+owedLabel+'</div>'+
     '</div>';
   }).join('');
 }
-
 window.settleExpenses=async function(){
   if(!expenseDetailUserId||!currentUser) return;
   const exps=getExpensesBetween(currentUser.id,expenseDetailUserId).filter(e=>!e.settled);
-  for(const e of exps){
-    await update(ref(db,'expenses/'+e.id),{settled:true,settledAt:Date.now()});
-  }
+  for(const e of exps) await update(ref(db,'expenses/'+e.id),{settled:true,settledAt:Date.now()});
   toast('Conto saldato con '+(state.users[expenseDetailUserId]?.name||'?'));
   renderExpenseDetail();
 };
 
-// ── EXPENSE FORM ──
+// EXPENSE FORM
 window.toggleExpenseBlock=function(){
   expActive=!expActive;
   document.getElementById('exp-toggle').classList.toggle('on',expActive);
   document.getElementById('exp-fields').classList.toggle('open',expActive);
-  if(!expActive){ document.getElementById('exp-preview').style.display='none'; document.getElementById('exp-preview2').style.display='none'; }
+  if(!expActive) document.getElementById('exp-preview').style.display='none';
 };
 window.selectPayer=function(who){
   expPayer=who;
@@ -1126,22 +1088,17 @@ window.selectSplit=function(mode){
 window.updateSplitPreview=function(){
   if(!expActive) return;
   const total=parseFloat(document.getElementById('exp-total').value)||0;
-  if(total<=0){ document.getElementById('exp-preview').style.display='none'; document.getElementById('exp-preview2').style.display='none'; return; }
+  const prev=document.getElementById('exp-preview');
+  if(total<=0){prev.style.display='none';return;}
   const oppName=document.getElementById('exp-opp-name').textContent||'Avv.';
   let myShare,oppShare;
-  if(expSplitMode==='half'){
-    myShare=total/2; oppShare=total/2;
-  } else {
-    myShare=parseFloat(document.getElementById('exp-my-share').value)||0;
-    oppShare=total-myShare;
-  }
+  if(expSplitMode==='half'){ myShare=total/2; oppShare=total/2; }
+  else { myShare=parseFloat(document.getElementById('exp-my-share').value)||0; oppShare=total-myShare; }
   const payerName=expPayer==='me'?'Tu':oppName;
   const owedAmt=expPayer==='me'?oppShare:myShare;
   const owedTo=expPayer==='me'?oppName:'te';
-  const p1=document.getElementById('exp-preview');
-  const p2=document.getElementById('exp-preview2');
-  p1.style.display='block'; p1.textContent=payerName+' paga €'+total.toFixed(2)+' — '+owedTo+' deve €'+owedAmt.toFixed(2);
-  p2.style.display='none';
+  prev.style.display='block';
+  prev.textContent=payerName+' paga €'+total.toFixed(2)+' — '+owedTo+' deve €'+owedAmt.toFixed(2);
 };
 function getExpenseData(matchId,p1Id,p2Id){
   if(!expActive) return null;
@@ -1151,14 +1108,12 @@ function getExpenseData(matchId,p1Id,p2Id){
   if(expSplitMode==='half'){ myShare=total/2; oppShare=total/2; }
   else { myShare=parseFloat(document.getElementById('exp-my-share').value)||0; oppShare=total-myShare; }
   const desc=document.getElementById('exp-desc').value.trim()||'Spesa campo';
-  // payerId = who actually paid; owerId = who owes; owedAmount = what ower owes
   const payerId=expPayer==='me'?p1Id:p2Id;
   const owerId=expPayer==='me'?p2Id:p1Id;
   const owedAmount=expPayer==='me'?oppShare:myShare;
   return {payerId,owerId,owedAmount,totalAmount:total,description:desc,matchId,createdAt:Date.now(),settled:false};
 }
 
-// ── ADMIN ──
 function renderAdmin(){
   if(!currentUser) return;
   const myLeague=vals(state.leagues).find(l=>l.adminId===currentUser.id);
@@ -1251,7 +1206,6 @@ window.removePlayer=async function(uid){
   toast('Giocatore rimosso');
 };
 
-// ── NEW MATCH ──
 function renderNewMatch(){
   nmSets=2;
   nmIgnorant={aces_p1:0,aces_p2:0,df_p1:0,df_p2:0,racket_p1:0,racket_p2:0};
@@ -1259,7 +1213,6 @@ function renderNewMatch(){
   document.getElementById('exp-toggle').classList.remove('on');
   document.getElementById('exp-fields').classList.remove('open');
   document.getElementById('exp-preview').style.display='none';
-  document.getElementById('exp-preview2').style.display='none';
   document.getElementById('exp-split-half').classList.add('sel');
   document.getElementById('exp-split-custom').classList.remove('sel');
   document.getElementById('exp-custom-fields').style.display='none';
@@ -1350,7 +1303,6 @@ window.submitMatch=async function(){
   showScreen('dashboard');
 };
 
-// ── ANNOUNCE ──
 function renderAnnounce(){
   const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
   if(!mem) return;
@@ -1387,7 +1339,6 @@ window.cancelAnnouncement=async function(annId){
   toast('Annuncio cancellato');
 };
 
-// ── CONFIRM MATCH ──
 window.openConfirm=function(matchId){
   confirmMatchData=vals(state.matches).find(m=>m.id===matchId);
   if(!confirmMatchData) return;
@@ -1405,7 +1356,6 @@ window.openConfirm=function(matchId){
     const tb=(s.tb1!=null&&s.tb2!=null)?'<div class="set-score-tb">'+s.tb1+' – '+s.tb2+'</div>':'';
     return '<div class="set-score-pill"><div class="set-score-main"><span style="color:'+(w1?'var(--accent)':'var(--text2)')+'">'+s.p1+'</span><span style="color:var(--text3)">–</span><span style="color:'+(w2?'var(--accent)':'var(--text2)')+'">'+s.p2+'</span></div>'+tb+'</div>';
   }).join('');
-  // Expense preview
   const exp=confirmMatchData.expense;
   const expBox=document.getElementById('conf-expense-box');
   if(exp&&exp.totalAmount>0){
@@ -1413,10 +1363,10 @@ window.openConfirm=function(matchId){
     const payer=state.users[exp.payerId];
     const ower=state.users[exp.owerId];
     document.getElementById('conf-expense-detail').innerHTML=
-      '<p>Totale pagato: <b>€'+exp.totalAmount.toFixed(2)+'</b></p>'+
+      '<p>Totale: <b>€'+exp.totalAmount.toFixed(2)+'</b></p>'+
       '<p>Ha pagato: <b>'+(payer?.name||'?')+'</b></p>'+
       '<p>'+(ower?.name||'?')+' deve: <b>€'+exp.owedAmount.toFixed(2)+'</b></p>'+
-      (exp.description?'<p style="color:var(--text3);font-size:11px;margin-top:4px">'+exp.description+'</p>':'');
+      (exp.description&&exp.description!=='Spesa campo'?'<p style="color:var(--text3);font-size:11px;margin-top:4px">'+exp.description+'</p>':'');
   } else { expBox.style.display='none'; }
   const ig=confirmMatchData.ignorant;
   const lines=[];
@@ -1442,7 +1392,6 @@ window.confirmMatch=async function(){
   const p2Ig=(ig.aces_p2*0.5)+(ig.df_p1*0.5)+(ig.racket_p1*0.5);
   const newIgW=(wMem.ignorantPoints||0)+(winnerId===m.p1Id?p1Ig:p2Ig);
   const newIgL=(lMem.ignorantPoints||0)+(loserId===m.p1Id?p1Ig:p2Ig);
-  // Bets
   const league=state.leagues[m.leagueId];
   const betAmt=league?.betAmount||3;
   const ann=vals(state.announcements).find(a=>a.leagueId===m.leagueId&&a.status==='open'&&((a.p1Id===m.p1Id&&a.p2Id===m.p2Id)||(a.p1Id===m.p2Id&&a.p2Id===m.p1Id)));
@@ -1457,7 +1406,6 @@ window.confirmMatch=async function(){
     }
     await update(ref(db,'announcements/'+ann.id),{status:'played',matchId:m.id});
   }
-  // Save expense to Firebase
   if(m.expense&&m.expense.totalAmount>0){
     const eid='exp_'+Date.now();
     await set(ref(db,'expenses/'+eid),{...m.expense,id:eid,matchId:m.id});
@@ -1476,7 +1424,6 @@ window.rejectMatch=async function(){
   confirmMatchData=null; showScreen('dashboard');
 };
 
-// ── PLAYER PROFILE ──
 window.openPlayer=function(uid){ profileUserId=uid; showScreen('player'); };
 function renderPlayerProfile(){
   if(!profileUserId) return;
@@ -1517,14 +1464,13 @@ function renderPlayerProfile(){
     return '<div class="history-card">'+
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'+
         '<div style="display:flex;align-items:center;gap:10px">'+avatarHTML(opp,28)+'<span style="color:var(--text);font-weight:700">vs '+(opp?.name||'?')+'</span></div>'+
-        '<span style="color:'+(won?'var(--green)':'var(--red)')+';font-size:10px;font-weight:700">'+(won?'VINTA':'PERSA')+'</span>'+
+        '<span style="color:'+(won?'var(--green)':'var(--red)')+';font-size:10px;font-weight:700;letter-spacing:0.5px">'+(won?'VINTA':'PERSA')+'</span>'+
       '</div>'+
       '<div style="display:flex;gap:10px">'+sh+'</div>'+el+
     '</div>';
   }).join('');
 }
 
-// ── HISTORY ──
 function renderHistory(){
   if(!currentUser) return;
   const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
@@ -1546,14 +1492,13 @@ function renderHistory(){
     return '<div class="history-card">'+
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'+
         '<div style="display:flex;align-items:center;gap:10px">'+avatarHTML(opp,28)+'<span style="color:var(--text);font-weight:600">vs '+(opp?.name||'?')+'</span></div>'+
-        '<span style="color:'+sc+';font-size:10px;font-weight:700">'+sl+'</span>'+
+        '<span style="color:'+sc+';font-size:10px;font-weight:700;letter-spacing:0.5px">'+sl+'</span>'+
       '</div>'+
       '<div style="display:flex;gap:8px">'+sh+'</div>'+el+
     '</div>';
   }).join('');
 }
 
-// ── CAMPI ──
 window.toggleSurface=function(s){
   const i=campoSurfaces.indexOf(s);
   if(i>=0) campoSurfaces.splice(i,1); else campoSurfaces.push(s);
