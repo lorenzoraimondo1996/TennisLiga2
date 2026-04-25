@@ -7,9 +7,6 @@
 <title>Tennisillo</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   ORIGINALE MARKONJE - NON MODIFICATO
-   ============================================================ */
 :root {
   --accent: #2563EB;
   --accent-light: #3B82F6;
@@ -33,15 +30,20 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
+/* TOAST */
 #toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); border-radius: 999px; padding: 10px 22px; font-weight: 600; font-size: 14px; z-index: 9999; box-shadow: var(–shadow-lg); white-space: nowrap; display: none; }
+
+/* LOADING */
 #loading-overlay { position: fixed; inset: 0; background: var(–bg); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
 .spinner { width: 36px; height: 36px; border: 3px solid rgba(37,99,235,0.2); border-top: 3px solid var(–accent); border-radius: 50%; animation: spin 0.9s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* SCREENS */
 .screen { display: none; min-height: 100vh; }
 .screen.active { display: flex; flex-direction: column; }
 .screen.center { align-items: center; justify-content: center; padding: 24px; background: var(–bg); }
 
+/* AUTH CARD */
 .card { background: var(–surface); border-radius: 22px; padding: 32px 28px; width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 14px; box-shadow: var(–shadow-lg); }
 .logo-wrap { text-align: center; margin-bottom: 8px; }
 .logo-icon { font-size: 48px; display: block; margin-bottom: 8px; }
@@ -49,13 +51,15 @@ html, body { min-height: 100vh; background: var(--bg); color: var(--text); font-
 .logo-text span { color: var(–accent); }
 .logo-sub { color: var(–text2); font-size: 12px; font-style: italic; margin-top: 4px; display: block; font-weight: 500; }
 
+/* INPUTS */
 .field-label { font-size: 12px; font-weight: 600; letter-spacing: 0.5px; color: var(–text2); margin-bottom: 6px; display: block; text-transform: uppercase; }
 input, select { background: var(–bg); border: 1.5px solid var(–border); border-radius: var(–radius-sm); color: var(–text); font-size: 15px; padding: 13px 14px; width: 100%; outline: none; font-family: ‘Inter’, sans-serif; transition: border-color 0.18s, box-shadow 0.18s; -webkit-appearance: none; }
 input:focus, select:focus { border-color: var(–accent); box-shadow: 0 0 0 3px var(–accent-dim); background: #fff; }
 input::placeholder { color: var(–text3); }
-input:-webkit-autofill, input:-webkit-autofill:focus { -webkit-text-fill-color: var(–text); -webkit-box-shadow: 0 0 0px 1000px var(–bg) inset; }
+input:-webkit-autofill, input:-webkit-autofill:focus { -webkit-text-fill-color: var(–text); -webkit-box-shadow: 0 0 0px 1000px var(–bg) inset; transition: background-color 5000s ease-in-out 0s; }
 select option { background: #fff; }
 
+/* BUTTONS */
 .btn-primary { background: var(–accent); color: #fff; border: none; border-radius: var(–radius); padding: 14px 0; width: 100%; font-weight: 700; font-size: 15px; cursor: pointer; letter-spacing: 0.2px; font-family: ‘Inter’, sans-serif; transition: opacity 0.18s, transform 0.1s; }
 .btn-primary:hover { opacity: 0.92; }
 .btn-primary:active { transform: scale(0.98); }
@@ -69,20 +73,24 @@ select option { background: #fff; }
 .btn-counter { background: var(–surface2); color: var(–text); border: 1.5px solid var(–border); border-radius: 8px; width: 32px; height: 32px; cursor: pointer; font-size: 16px; display: inline-flex; align-items: center; justify-content: center; font-family: ‘Inter’, sans-serif; font-weight: 700; transition: all 0.15s; }
 .btn-counter:hover { border-color: var(–accent); color: var(–accent); }
 
+/* PAGE LAYOUT */
 .page-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(–border); background: rgba(242,242,247,0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 10; }
 .header-logo { color: var(–accent); font-weight: 800; font-size: 17px; letter-spacing: -0.3px; }
 .header-name { color: var(–text2); font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
 .header-actions { display: flex; gap: 8px; }
-.page-content { flex: 1; padding: 18px 18px 72px; max-width: 560px; width: 100%; margin: 0 auto; }
+.page-content { flex: 1; padding: 20px 20px 60px; max-width: 560px; width: 100%; margin: 0 auto; }
 
-.section { margin-bottom: 22px; }
+/* SECTIONS */
+.section { margin-bottom: 24px; }
 .section-title { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(–text2); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
 .section-title::after { content: ‘’; flex: 1; height: 1px; background: var(–border); }
 
+/* LEAGUE BANNER */
 .league-banner { background: linear-gradient(135deg, var(–accent) 0%, var(–accent-light) 100%); border-radius: var(–radius); padding: 16px 20px; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 16px rgba(37,99,235,0.25); }
 .league-banner-name { color: #fff; font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
 .league-banner-elo { color: rgba(255,255,255,0.9); font-weight: 700; font-size: 15px; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 999px; }
 
+/* LEADERBOARD */
 .lb-table { background: var(–surface); border-radius: var(–radius); overflow: hidden; box-shadow: var(–shadow); }
 .lb-header { display: flex; padding: 10px 14px; background: var(–surface2); border-bottom: 1px solid var(–border); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(–text3); align-items: center; }
 .lb-row { display: flex; padding: 11px 14px; font-size: 13px; border-bottom: 1px solid var(–border); cursor: pointer; transition: background 0.12s; align-items: center; }
@@ -90,15 +98,19 @@ select option { background: #fff; }
 .lb-row:hover { background: var(–bg); }
 .lb-row.me { background: var(–accent-dim); }
 
+/* AVATAR */
 .avatar { border-radius: 50%; flex-shrink: 0; background-size: cover; background-position: center; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; }
 .avatar-fallback { background: linear-gradient(135deg, var(–accent), var(–accent-light)); }
 
+/* PENDING */
 .pending-card { display: flex; justify-content: space-between; align-items: center; background: var(–surface); border: 1.5px solid var(–accent-border); border-radius: var(–radius-sm); padding: 13px 16px; margin-bottom: 8px; cursor: pointer; transition: background 0.15s, box-shadow 0.15s; box-shadow: var(–shadow); }
 .pending-card:hover { background: var(–accent-dim); box-shadow: 0 4px 16px rgba(37,99,235,0.12); }
 .confirm-btn { color: var(–accent); font-size: 12px; font-weight: 700; }
 
+/* MEMBER ROW */
 .member-row { display: flex; align-items: center; background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 12px 14px; margin-bottom: 6px; box-shadow: var(–shadow); }
 
+/* SET INPUTS */
 .set-block { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 14px; margin-bottom: 10px; box-shadow: var(–shadow); }
 .set-block-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(–text2); margin-bottom: 10px; display: block; }
 .set-inputs { display: flex; align-items: center; gap: 10px; }
@@ -110,48 +122,56 @@ select option { background: #fff; }
 .tb-inputs { display: flex; align-items: center; gap: 8px; }
 .tb-inputs input { flex: 1; margin: 0; text-align: center; font-size: 16px; padding: 8px; }
 
+/* IGNORANT */
 .ignorant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .ignorant-item { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 14px; display: flex; flex-direction: column; align-items: center; gap: 8px; box-shadow: var(–shadow); }
 .ignorant-label { font-size: 11px; color: var(–text2); text-align: center; font-weight: 600; }
 .ignorant-controls { display: flex; align-items: center; gap: 12px; }
 .ignorant-val { color: var(–accent); font-weight: 800; min-width: 20px; text-align: center; font-size: 18px; }
 
+/* CONFIRM CARD */
 .confirm-card { background: var(–surface); border: 1.5px solid var(–border); border-radius: 18px; padding: 24px; box-shadow: var(–shadow-lg); }
 .vs-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
 .vs-player { text-align: center; flex: 1; }
 .vs-name { color: var(–text); font-size: 17px; font-weight: 700; }
 .vs-elo { color: var(–text2); font-size: 11px; margin-top: 4px; font-weight: 600; }
 .vs-divider { color: var(–text3); font-size: 20px; padding: 0 8px; font-weight: 300; }
-.set-scores { display: flex; justify-content: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.set-scores { display: flex; justify-content: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
 .set-score-pill { background: var(–surface2); border: 1.5px solid var(–border); border-radius: 10px; padding: 8px 14px; text-align: center; }
 .set-score-main { display: flex; gap: 6px; font-size: 22px; font-weight: 800; }
 .set-score-tb { font-size: 10px; color: var(–text3); letter-spacing: 1px; margin-top: 2px; text-align: center; }
-.winner-line { text-align: center; margin-bottom: 20px; padding: 14px; background: var(–accent-dim); border: 1.5px solid var(–accent-border); border-radius: 10px; }
-.winner-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(–accent); font-weight: 700; margin-bottom: 4px; }
+.winner-line { text-align: center; margin-bottom: 20px; padding: 12px; background: var(–accent-dim); border: 1.5px solid var(–accent-border); border-radius: 8px; }
+.winner-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(–accent); margin-bottom: 4px; }
 .winner-name-text { color: var(–text); font-size: 20px; font-weight: 800; }
-.ignorant-box { background: var(–surface2); border: 1.5px solid var(–border); border-radius: 10px; padding: 14px; margin-bottom: 20px; }
-.ignorant-box-title { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(–text2); font-weight: 700; margin-bottom: 8px; display: block; }
-.ignorant-box p { color: var(–text2); font-size: 13px; margin-bottom: 3px; }
+.ignorant-box { background: var(–surface2); border: 1.5px solid var(–border); border-radius: 8px; padding: 14px; margin-bottom: 20px; }
+.ignorant-box-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(–text2); margin-bottom: 8px; display: block; }
+.ignorant-box p { color: var(–text2); font-size: 12px; margin-bottom: 3px; }
 
+/* HISTORY */
 .history-card { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 14px 16px; margin-bottom: 8px; transition: border-color 0.15s, box-shadow 0.15s; box-shadow: var(–shadow); }
 .history-card:hover { border-color: var(–accent-border); box-shadow: 0 4px 16px rgba(37,99,235,0.1); }
 
-.stat-box { text-align: center; background: var(–surface2); border-radius: 10px; padding: 14px; }
-.stat-val { font-size: 26px; font-weight: 900; }
-.stat-label { font-size: 10px; letter-spacing: 0.5px; color: var(–text2); margin-top: 2px; font-weight: 600; text-transform: uppercase; }
+/* STATS */
+.stat-box { text-align: center; background: var(–surface2); border-radius: 10px; padding: 12px; }
+.stat-val { font-size: 24px; font-weight: 900; }
+.stat-label { font-size: 10px; letter-spacing: 1px; color: var(–text2); margin-top: 2px; font-weight: 600; }
 
+/* PREVIEW */
 .preview-box { border-radius: 10px; padding: 12px; text-align: center; }
-.preview-label { font-size: 10px; letter-spacing: 0.5px; margin-bottom: 6px; font-weight: 700; text-transform: uppercase; }
+.preview-label { font-size: 10px; letter-spacing: 1px; margin-bottom: 6px; }
 .preview-val { font-size: 22px; font-weight: 900; }
 
-.empty-state { display: flex; align-items: center; justify-content: center; min-height: 200px; color: var(–text2); text-align: center; line-height: 1.7; font-weight: 500; }
+/* MISC */
+.empty-state { display: flex; align-items: center; justify-content: center; min-height: 200px; color: var(–text2); text-align: center; line-height: 1.6; }
 .action-row { display: flex; gap: 12px; margin-top: 4px; }
 .action-row .btn-primary, .action-row .btn-ghost { flex: 1; }
 
+/* PROFILE */
 .profile-avatar-wrap { position: relative; width: 96px; height: 96px; margin: 0 auto 14px; }
 .profile-avatar { width: 96px; height: 96px; border-radius: 50%; background-size: cover; background-position: center; border: 3px solid var(–accent-border); display: flex; align-items: center; justify-content: center; font-size: 36px; font-weight: 900; color: #fff; background-color: var(–accent); }
 .profile-avatar-edit { position: absolute; bottom: 0; right: 0; width: 30px; height: 30px; border-radius: 50%; background: var(–accent); color: #fff; border: 2.5px solid var(–bg); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 13px; }
 
+/* TOGGLE */
 .toggle-row { display: flex; align-items: center; justify-content: space-between; background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 14px 16px; margin-bottom: 10px; box-shadow: var(–shadow); }
 .toggle-label { color: var(–text); font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; }
 .toggle { position: relative; width: 50px; height: 28px; background: var(–text3); border-radius: 999px; cursor: pointer; transition: background 0.2s; flex-shrink: 0; }
@@ -159,6 +179,7 @@ select option { background: #fff; }
 .toggle.on { background: var(–green); }
 .toggle.on::after { transform: translateX(22px); }
 
+/* SURFACE */
 .surface-selector { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 10px; }
 .indoor-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
 .surface-btn { background: var(–surface2); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 14px 6px; text-align: center; cursor: pointer; transition: all 0.15s; color: var(–text2); }
@@ -167,6 +188,7 @@ select option { background: #fff; }
 .surface-btn-label { font-size: 10px; letter-spacing: 0.5px; font-weight: 700; text-transform: uppercase; }
 .surface-pill { display: inline-flex; align-items: center; gap: 4px; background: var(–surface2); border-radius: 999px; padding: 3px 10px; font-size: 11px; color: var(–text2); font-weight: 600; border: 1px solid var(–border); }
 
+/* BETS */
 .bet-card { background: var(–surface); border: 1.5px solid var(–accent-border); border-radius: var(–radius); padding: 16px; margin-bottom: 10px; box-shadow: var(–shadow); }
 .bet-vs { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
 .bet-player { flex: 1; text-align: center; padding: 12px; background: var(–surface2); border: 1.5px solid var(–border); border-radius: var(–radius-sm); cursor: pointer; transition: all 0.15s; }
@@ -179,48 +201,6 @@ select option { background: #fff; }
 .bet-meta { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(–text2); padding-top: 10px; border-top: 1px solid var(–border); font-weight: 600; }
 
 .flex { display: flex; } .gap-8 { gap: 8px; } .gap-12 { gap: 12px; } .flex-1 { flex: 1; }
-
-/* ============================================================
-SOLO AGGIUNTE NUOVE - menu laterale, spese
-============================================================ */
-#menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; display: none; }
-#menu-overlay.open { display: block; }
-#side-menu { position: fixed; top: 0; left: 0; bottom: 0; width: 270px; background: #FFFFFF; z-index: 201; transform: translateX(-100%); transition: transform 0.28s cubic-bezier(0.4,0,0.2,1); box-shadow: 6px 0 30px rgba(0,0,0,0.15); display: flex; flex-direction: column; }
-#side-menu.open { transform: translateX(0); }
-.menu-header { padding: 52px 24px 20px; background: linear-gradient(135deg, var(–accent) 0%, var(–accent-light) 100%); border-bottom: 1px solid rgba(255,255,255,0.15); }
-.menu-logo { color: #fff; font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
-.menu-logo span { color: var(–accent); font-weight: 900; }
-.menu-user { color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 500; margin-top: 8px; display: flex; align-items: center; gap: 8px; }
-.menu-items { flex: 1; padding: 8px 0; overflow-y: auto; background: #FFFFFF; }
-.menu-section-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(–text3); padding: 16px 24px 6px; }
-.menu-item { display: flex; align-items: center; gap: 14px; padding: 13px 24px; font-size: 15px; font-weight: 600; color: var(–text2); cursor: pointer; transition: all 0.15s; border-left: 3px solid transparent; background: #FFFFFF; }
-.menu-item:hover { background: var(–bg); color: var(–text); }
-.menu-item.active { color: var(–accent); background: var(–accent-dim); border-left-color: var(–accent); }
-.menu-item-icon { font-size: 18px; width: 24px; text-align: center; flex-shrink: 0; }
-.menu-footer { padding: 16px 24px; border-top: 1px solid var(–border); background: #FFFFFF; }
-.menu-logout { display: flex; align-items: center; gap: 10px; color: var(–red); font-size: 14px; font-weight: 600; cursor: pointer; }
-.hamburger { background: var(–surface2); border: 1.5px solid var(–border); border-radius: 8px; width: 34px; height: 34px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; transition: all 0.15s; }
-.hamburger:hover { border-color: var(–accent); background: var(–accent-dim); }
-.hamburger span { width: 14px; height: 1.5px; background: var(–text2); border-radius: 1px; display: block; }
-.hamburger:hover span { background: var(–accent); }
-
-/* Expense block in new match */
-.expense-block { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 16px; box-shadow: var(–shadow); }
-.expense-toggle-row { display: flex; align-items: center; justify-content: space-between; }
-.expense-fields { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(–border); display: none; }
-.expense-fields.open { display: block; }
-.split-preview { background: var(–accent-dim); border: 1.5px solid var(–accent-border); border-radius: 8px; padding: 10px 14px; margin-top: 10px; font-size: 13px; color: var(–accent); font-weight: 600; text-align: center; }
-
-/* Expenses screen */
-.expense-person-card { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 14px 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 14px; cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s; box-shadow: var(–shadow); }
-.expense-person-card:hover { border-color: var(–accent-border); box-shadow: 0 4px 16px rgba(37,99,235,0.1); }
-.expense-detail-card { background: var(–surface); border: 1.5px solid var(–border); border-radius: var(–radius-sm); padding: 12px 14px; margin-bottom: 6px; box-shadow: var(–shadow); }
-.settle-banner { border-radius: var(–radius-sm); padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-.settle-banner.credit { background: linear-gradient(135deg, #28a745, var(–green)); box-shadow: 0 4px 16px rgba(52,199,89,0.3); }
-.settle-banner.debt { background: linear-gradient(135deg, #cc2200, var(–red)); box-shadow: 0 4px 16px rgba(255,59,48,0.3); }
-.settle-banner.even { background: linear-gradient(135deg, #636366, #8e8e93); }
-.settle-text { color: #fff; font-size: 13px; font-weight: 600; }
-.settle-amount { color: #fff; font-size: 22px; font-weight: 900; }
 </style>
 
 </head>
@@ -231,29 +211,6 @@ SOLO AGGIUNTE NUOVE - menu laterale, spese
   <p style="color:var(--accent);font-size:13px;font-weight:600;margin-top:4px">Connessione…</p>
 </div>
 <input type="file" id="photo-input" accept="image/*" style="display:none"/>
-
-<!-- SIDE MENU -->
-
-<div id="menu-overlay" onclick="closeMenu()"></div>
-<div id="side-menu">
-  <div class="menu-header">
-    <div class="menu-logo">Tennis<span style="color:rgba(255,255,255,0.65)">illo</span></div>
-    <div class="menu-user" id="menu-user-info">—</div>
-  </div>
-  <div class="menu-items">
-    <div class="menu-section-label">Principale</div>
-    <div class="menu-item active" id="mi-dashboard" onclick="menuNav('dashboard')"><span class="menu-item-icon">🏠</span>Dashboard</div>
-    <div class="menu-item" id="mi-expenses" onclick="menuNav('expenses')"><span class="menu-item-icon">💰</span>Divisione Spese</div>
-    <div class="menu-section-label">Extra</div>
-    <div class="menu-item" id="mi-bets" onclick="menuNav('bets')"><span class="menu-item-icon">🎰</span>Scommesse</div>
-    <div class="menu-item" id="mi-campi" onclick="menuNav('campi')"><span class="menu-item-icon">🏟</span>Prenota Campi</div>
-    <div class="menu-section-label">Altro</div>
-    <div class="menu-item" id="mi-admin" onclick="menuNav('admin')"><span class="menu-item-icon">⚙️</span>Admin</div>
-  </div>
-  <div class="menu-footer">
-    <div class="menu-logout" onclick="logout()">↩ &nbsp;Esci</div>
-  </div>
-</div>
 
 <!-- LOGIN -->
 
@@ -302,9 +259,12 @@ SOLO AGGIUNTE NUOVE - menu laterale, spese
 
 <div id="screen-dashboard" class="screen">
   <div class="page-header">
-    <button class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></button>
     <span class="header-logo">🎾 Tennisillo</span>
     <span class="header-name" id="dash-username"></span>
+    <div class="header-actions">
+      <button class="btn-small" onclick="showScreen('admin')">⚙</button>
+      <button class="btn-small" onclick="logout()">↩</button>
+    </div>
   </div>
   <div class="page-content">
     <div id="dash-no-league" class="empty-state" style="display:none"><p>Non sei ancora in nessuna lega.<br>Chiedi all'admin di aggiungerti.</p></div>
@@ -316,6 +276,10 @@ SOLO AGGIUNTE NUOVE - menu laterale, spese
       <div id="dash-pending" class="section" style="display:none">
         <div class="section-title" id="dash-pending-title">Da Confermare</div>
         <div id="dash-pending-list"></div>
+      </div>
+      <div id="dash-bets" class="section" style="display:none">
+        <div class="section-title">🎰 Scommesse Aperte</div>
+        <div id="dash-bets-list"></div>
       </div>
       <div class="section">
         <div class="section-title">Classifica</div>
@@ -336,81 +300,15 @@ SOLO AGGIUNTE NUOVE - menu laterale, spese
         <button class="btn-primary" onclick="showScreen('newmatch')">+ Nuova Partita</button>
         <button class="btn-ghost" onclick="showScreen('history')">Storico</button>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- BETS SCREEN -->
-
-<div id="screen-bets" class="screen">
-  <div class="page-header">
-    <button class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></button>
-    <span class="header-logo">🎰 Scommesse</span>
-    <span></span>
-  </div>
-  <div class="page-content">
-    <div id="bets-announce-wrap" style="display:none;margin-bottom:16px">
-      <button class="btn-ghost" style="width:100%;border-color:var(--accent-border);color:var(--accent)" onclick="showScreen('announce')">+ Annuncia Partita per Scommesse</button>
-    </div>
-    <div class="section">
-      <div class="section-title">Scommesse Aperte</div>
-      <div id="bets-open-list"></div>
-    </div>
-    <div class="section">
-      <div class="section-title">Storico Scommesse</div>
-      <div id="bets-history-list"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ANNOUNCE MATCH -->
-
-<div id="screen-announce" class="screen">
-  <div class="page-header">
-    <span class="header-logo">🎰 Annuncia</span>
-    <button class="btn-small" onclick="showScreen('bets')">← Indietro</button>
-  </div>
-  <div class="page-content">
-    <div class="section">
-      <div class="section-title">Avversario</div>
-      <select id="ann-opponent"></select>
-      <p style="color:var(--text2);font-size:13px;margin-top:12px;line-height:1.6;font-weight:500">Una volta annunciata, gli altri potranno scommettere su chi vincerà. Le scommesse si risolvono appena il risultato viene confermato.</p>
-    </div>
-    <button class="btn-primary" onclick="submitAnnouncement()">Annuncia Partita</button>
-  </div>
-</div>
-
-<!-- EXPENSES SCREEN -->
-
-<div id="screen-expenses" class="screen">
-  <div class="page-header">
-    <button class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></button>
-    <span class="header-logo">💰 Divisione Spese</span>
-    <span></span>
-  </div>
-  <div class="page-content">
-    <div class="section">
-      <div class="section-title">Saldi con i compagni</div>
-      <div id="expenses-list"></div>
-    </div>
-  </div>
-</div>
-
-<!-- EXPENSE DETAIL -->
-
-<div id="screen-expense-detail" class="screen">
-  <div class="page-header">
-    <span class="header-logo" id="expense-detail-title">Spese</span>
-    <button class="btn-small" onclick="showScreen('expenses')">← Indietro</button>
-  </div>
-  <div class="page-content">
-    <div id="expense-settle-banner"></div>
-    <div id="expense-settle-btn-wrap" style="margin-bottom:16px;display:none">
-      <button class="btn-primary" onclick="settleExpenses()">✓ Salda il conto</button>
-    </div>
-    <div class="section">
-      <div class="section-title">Registro Spese</div>
-      <div id="expense-detail-list"></div>
+      <div id="dash-announce-wrap" style="margin-top:10px;display:none">
+        <button class="btn-ghost" style="width:100%;border-color:var(--accent-border);color:var(--accent)" onclick="showScreen('announce')">🎰 Annuncia Partita per Scommesse</button>
+      </div>
+      <div style="margin-top:10px">
+        <button class="btn-ghost" style="width:100%" onclick="showScreen('expenses')">💰 Divisione Spese</button>
+      </div>
+      <div style="margin-top:10px">
+        <button class="btn-ghost" style="width:100%" onclick="showScreen('campi')">🏟 Campi da Tennis</button>
+      </div>
     </div>
   </div>
 </div>
@@ -419,9 +317,8 @@ SOLO AGGIUNTE NUOVE - menu laterale, spese
 
 <div id="screen-admin" class="screen">
   <div class="page-header">
-    <button class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></button>
-    <span class="header-logo">⚙️ Admin</span>
-    <span></span>
+    <span class="header-logo">⚙ Admin</span>
+    <button class="btn-small" onclick="showScreen('dashboard')">← Dashboard</button>
   </div>
   <div class="page-content">
     <div id="admin-create-section" style="display:none">
@@ -483,41 +380,38 @@ SOLO AGGIUNTE NUOVE - menu laterale, spese
         </div>
       </div>
       <div style="display:flex;gap:8px;margin-bottom:8px">
-        <span style="flex:1;text-align:center;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700">TU</span>
+        <span style="flex:1;text-align:center;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700">TU</span>
         <span style="width:20px"></span>
-        <span style="flex:1;text-align:center;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text2);font-weight:700" id="nm-opp-label">AVV.</span>
+        <span style="flex:1;text-align:center;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text2);font-weight:700" id="nm-opp-label">AVV.</span>
       </div>
       <div id="nm-sets"></div>
     </div>
-    <!-- SPESE CAMPO - NUOVO -->
     <div class="section">
       <div class="section-title">💰 Spese Campo</div>
-      <div class="expense-block">
-        <div class="expense-toggle-row">
-          <span style="font-size:14px;font-weight:600;color:var(--text)">Aggiungere una spesa?</span>
-          <div id="exp-toggle" class="toggle" onclick="toggleExpenseBlock()"></div>
+      <div class="toggle-row">
+        <span class="toggle-label">Aggiungere una spesa?</span>
+        <div id="exp-toggle" class="toggle" onclick="toggleExpenseBlock()"></div>
+      </div>
+      <div id="exp-fields" style="display:none">
+        <label class="field-label" style="margin-top:14px">Totale pagato (€)</label>
+        <input type="number" id="exp-total" placeholder="es. 30" min="0" step="0.5" oninput="updateSplitPreview()"/>
+        <label class="field-label" style="margin-top:12px">Chi ha pagato?</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+          <div class="surface-btn" id="exp-paid-me" onclick="selectPayer('me')"><span class="surface-btn-icon">🙋</span><span class="surface-btn-label">Io</span></div>
+          <div class="surface-btn" id="exp-paid-opp" onclick="selectPayer('opp')"><span class="surface-btn-icon">👤</span><span class="surface-btn-label" id="exp-opp-name">Avv.</span></div>
         </div>
-        <div class="expense-fields" id="exp-fields">
-          <label class="field-label" style="margin-top:0">Totale pagato (€)</label>
-          <input type="number" id="exp-total" placeholder="es. 30" min="0" step="0.5" oninput="updateSplitPreview()"/>
-          <label class="field-label" style="margin-top:12px">Chi ha pagato?</label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
-            <div class="surface-btn" id="exp-paid-me" onclick="selectPayer('me')"><span class="surface-btn-icon">🙋</span><span class="surface-btn-label">Io</span></div>
-            <div class="surface-btn" id="exp-paid-opp" onclick="selectPayer('opp')"><span class="surface-btn-icon">👤</span><span class="surface-btn-label" id="exp-opp-name">Avv.</span></div>
-          </div>
-          <label class="field-label">Divisione</label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-            <div class="surface-btn sel" id="exp-split-half" onclick="selectSplit('half')"><span class="surface-btn-icon">⚖️</span><span class="surface-btn-label">Metà/metà</span></div>
-            <div class="surface-btn" id="exp-split-custom" onclick="selectSplit('custom')"><span class="surface-btn-icon">✏️</span><span class="surface-btn-label">Personalizza</span></div>
-          </div>
-          <div id="exp-custom-fields" style="display:none;margin-bottom:8px">
-            <label class="field-label">La mia quota (€)</label>
-            <input type="number" id="exp-my-share" placeholder="€" min="0" step="0.5" oninput="updateSplitPreview()"/>
-          </div>
-          <div id="exp-preview" class="split-preview" style="display:none"></div>
-          <label class="field-label" style="margin-top:12px">Descrizione <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text3)">(opzionale)</span></label>
-          <input type="text" id="exp-desc" placeholder="es. Campo + palline"/>
+        <label class="field-label">Divisione</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+          <div class="surface-btn sel" id="exp-split-half" onclick="selectSplit('half')"><span class="surface-btn-icon">⚖️</span><span class="surface-btn-label">Metà/metà</span></div>
+          <div class="surface-btn" id="exp-split-custom" onclick="selectSplit('custom')"><span class="surface-btn-icon">✏️</span><span class="surface-btn-label">Personalizza</span></div>
         </div>
+        <div id="exp-custom-fields" style="display:none;margin-bottom:8px">
+          <label class="field-label">La mia quota (€)</label>
+          <input type="number" id="exp-my-share" placeholder="€" min="0" step="0.5" oninput="updateSplitPreview()"/>
+        </div>
+        <div id="exp-preview" style="display:none;background:var(--accent-dim);border:1.5px solid var(--accent-border);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:13px;color:var(--accent);font-weight:600;text-align:center"></div>
+        <label class="field-label" style="margin-top:12px">Descrizione <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text3)">(opzionale)</span></label>
+        <input type="text" id="exp-desc" placeholder="es. Campo + palline"/>
       </div>
     </div>
     <div class="section">
@@ -526,6 +420,23 @@ SOLO AGGIUNTE NUOVE - menu laterale, spese
       <p style="color:var(--text3);font-size:11px;margin-top:10px;font-weight:500">Ace +0.5 a chi li fa · Doppio Fallo / Racchetta +0.5 all'avversario</p>
     </div>
     <button class="btn-primary" onclick="submitMatch()">Invia per Conferma</button>
+  </div>
+</div>
+
+<!-- ANNOUNCE MATCH -->
+
+<div id="screen-announce" class="screen">
+  <div class="page-header">
+    <span class="header-logo">🎰 Annuncia</span>
+    <button class="btn-small" onclick="showScreen('dashboard')">← Indietro</button>
+  </div>
+  <div class="page-content">
+    <div class="section">
+      <div class="section-title">Avversario</div>
+      <select id="ann-opponent"></select>
+      <p style="color:var(--text2);font-size:13px;margin-top:12px;line-height:1.6;font-weight:500">Una volta annunciata, gli altri membri della lega potranno scommettere su chi vincerà. Le scommesse si risolvono appena viene confermato il risultato.</p>
+    </div>
+    <button class="btn-primary" onclick="submitAnnouncement()">Annuncia Partita</button>
   </div>
 </div>
 
@@ -547,7 +458,7 @@ SOLO AGGIUNTE NUOVE - menu laterale, spese
       <div class="set-scores" id="conf-sets"></div>
       <div class="winner-line"><div class="winner-label">Vincitore</div><div class="winner-name-text" id="conf-winner"></div></div>
       <div id="conf-expense-box" style="display:none">
-        <div class="ignorant-box" style="margin-bottom:16px">
+        <div class="ignorant-box">
           <span class="ignorant-box-title">💰 Spesa Campo</span>
           <div id="conf-expense-detail"></div>
         </div>
@@ -573,31 +484,31 @@ SOLO AGGIUNTE NUOVE - menu laterale, spese
       <div style="text-align:center;padding:8px 0 16px">
         <div class="profile-avatar-wrap" id="profile-avatar-wrap"></div>
         <div id="profile-name" style="font-size:22px;font-weight:900;color:var(--text);margin-bottom:4px"></div>
-        <div id="profile-elo" style="color:var(--accent);font-size:15px;font-weight:700"></div>
+        <div id="profile-elo" style="color:var(--accent);font-size:14px;font-weight:700"></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:8px">
-        <div class="stat-box"><div class="stat-val" id="profile-wins" style="color:var(--green)"></div><div class="stat-label">Vittorie</div></div>
-        <div class="stat-box"><div class="stat-val" id="profile-losses" style="color:var(--red)"></div><div class="stat-label">Sconfitte</div></div>
-        <div class="stat-box"><div class="stat-val" id="profile-ignorant" style="color:var(--orange)"></div><div class="stat-label">😂 Pts</div></div>
+        <div class="stat-box"><div class="stat-val" id="profile-wins" style="color:var(--green)"></div><div class="stat-label">VITTORIE</div></div>
+        <div class="stat-box"><div class="stat-val" id="profile-losses" style="color:var(--red)"></div><div class="stat-label">SCONFITTE</div></div>
+        <div class="stat-box"><div class="stat-val" id="profile-ignorant" style="color:var(--accent)"></div><div class="stat-label">😂 PTS</div></div>
       </div>
     </div>
     <div id="profile-preview-section" style="display:none;margin-bottom:20px">
       <div class="section-title">Se giocassi contro di lui</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
-        <div class="preview-box" style="background:rgba(52,199,89,0.08);border:1.5px solid rgba(52,199,89,0.25);border-radius:10px">
-          <div class="preview-label" style="color:var(--green)">Vittoria netta</div>
+        <div class="preview-box" style="background:rgba(52,199,89,0.08);border:1.5px solid rgba(52,199,89,0.25)">
+          <div class="preview-label" style="color:var(--green)">VITTORIA NETTA</div>
           <div class="preview-val" id="preview-win-big" style="color:var(--green)"></div>
-          <div style="font-size:10px;color:var(--text2);margin-top:2px;font-weight:600">Pt</div>
+          <div style="font-size:10px;color:var(--text2);margin-top:2px">Pt</div>
         </div>
-        <div class="preview-box" style="background:var(--accent-dim);border:1.5px solid var(--accent-border);border-radius:10px">
-          <div class="preview-label" style="color:var(--accent)">Vittoria tirata</div>
+        <div class="preview-box" style="background:var(--accent-dim);border:1.5px solid var(--accent-border)">
+          <div class="preview-label" style="color:var(--accent)">VITTORIA TIRATA</div>
           <div class="preview-val" id="preview-win-close" style="color:var(--accent)"></div>
-          <div style="font-size:10px;color:var(--text2);margin-top:2px;font-weight:600">Pt</div>
+          <div style="font-size:10px;color:var(--text2);margin-top:2px">Pt</div>
         </div>
-        <div class="preview-box" style="background:rgba(255,59,48,0.08);border:1.5px solid rgba(255,59,48,0.2);border-radius:10px">
-          <div class="preview-label" style="color:var(--red)">Sconfitta</div>
+        <div class="preview-box" style="background:rgba(255,59,48,0.08);border:1.5px solid rgba(255,59,48,0.2)">
+          <div class="preview-label" style="color:var(--red)">SCONFITTA</div>
           <div class="preview-val" id="preview-lose" style="color:var(--red)"></div>
-          <div style="font-size:10px;color:var(--text2);margin-top:2px;font-weight:600">Pt</div>
+          <div style="font-size:10px;color:var(--text2);margin-top:2px">Pt</div>
         </div>
       </div>
     </div>
@@ -616,13 +527,46 @@ SOLO AGGIUNTE NUOVE - menu laterale, spese
   <div class="page-content" id="history-list"></div>
 </div>
 
+<!-- EXPENSES -->
+
+<div id="screen-expenses" class="screen">
+  <div class="page-header">
+    <span class="header-logo">💰 Divisione Spese</span>
+    <button class="btn-small" onclick="showScreen('dashboard')">← Indietro</button>
+  </div>
+  <div class="page-content">
+    <div class="section">
+      <div class="section-title">Saldi con i compagni</div>
+      <div id="expenses-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPENSE DETAIL -->
+
+<div id="screen-expense-detail" class="screen">
+  <div class="page-header">
+    <span class="header-logo" id="expense-detail-title">Spese</span>
+    <button class="btn-small" onclick="showScreen('expenses')">← Indietro</button>
+  </div>
+  <div class="page-content">
+    <div id="expense-settle-banner"></div>
+    <div id="expense-settle-btn-wrap" style="margin-bottom:16px;display:none">
+      <button class="btn-primary" onclick="settleExpenses()">✓ Salda il conto</button>
+    </div>
+    <div class="section">
+      <div class="section-title">Registro Spese</div>
+      <div id="expense-detail-list"></div>
+    </div>
+  </div>
+</div>
+
 <!-- CAMPI -->
 
 <div id="screen-campi" class="screen">
   <div class="page-header">
-    <button class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></button>
     <span class="header-logo">🏟 Campi</span>
-    <span></span>
+    <button class="btn-small" onclick="showScreen('dashboard')">← Indietro</button>
   </div>
   <div class="page-content">
     <div id="campi-admin-section" style="display:none">
@@ -630,16 +574,16 @@ SOLO AGGIUNTE NUOVE - menu laterale, spese
         <div class="section-title">Aggiungi Campo</div>
         <div><label class="field-label">Nome campo</label><input id="campo-nome" type="text" placeholder="es. Tennis Club Vicenza" style="margin-bottom:10px"/></div>
         <div><label class="field-label">Link prenotazione</label><input id="campo-url" type="url" placeholder="https://..." style="margin-bottom:10px"/></div>
-        <label class="field-label">Superficie <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text3)">(puoi sceglierne più di una)</span></label>
+        <label class="field-label">Superficie</label>
         <div class="surface-selector" id="surface-sel">
-          <div class="surface-btn" data-surface="terra" onclick="toggleSurface('terra')"><span class="surface-btn-icon">🟠</span><span class="surface-btn-label">Terra</span></div>
-          <div class="surface-btn" data-surface="cemento" onclick="toggleSurface('cemento')"><span class="surface-btn-icon">⬜</span><span class="surface-btn-label">Cemento</span></div>
-          <div class="surface-btn" data-surface="sintetico" onclick="toggleSurface('sintetico')"><span class="surface-btn-icon">🎾</span><span class="surface-btn-label">Sintetico</span></div>
+          <div class="surface-btn" data-surface="terra" onclick="selectSurface('terra')"><span class="surface-btn-icon">🟠</span><span class="surface-btn-label">Terra</span></div>
+          <div class="surface-btn" data-surface="cemento" onclick="selectSurface('cemento')"><span class="surface-btn-icon">⬜</span><span class="surface-btn-label">Cemento</span></div>
+          <div class="surface-btn" data-surface="sintetico" onclick="selectSurface('sintetico')"><span class="surface-btn-icon">🟢</span><span class="surface-btn-label">Sintetico</span></div>
         </div>
-        <label class="field-label">Copertura <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text3)">(puoi scegliere entrambe)</span></label>
+        <label class="field-label">Copertura</label>
         <div class="indoor-selector" id="indoor-sel">
-          <div class="surface-btn" data-indoor="outdoor" onclick="toggleIndoor('outdoor')"><span class="surface-btn-icon">☀️</span><span class="surface-btn-label">Scoperto</span></div>
-          <div class="surface-btn" data-indoor="indoor" onclick="toggleIndoor('indoor')"><span class="surface-btn-icon">☂️</span><span class="surface-btn-label">Coperto</span></div>
+          <div class="surface-btn" data-indoor="false" onclick="selectIndoor(false)"><span class="surface-btn-icon">☀️</span><span class="surface-btn-label">Scoperto</span></div>
+          <div class="surface-btn" data-indoor="true" onclick="selectIndoor(true)"><span class="surface-btn-icon">☂️</span><span class="surface-btn-label">Coperto</span></div>
         </div>
         <button class="btn-primary" onclick="addCampo()">Aggiungi Campo</button>
       </div>
@@ -677,8 +621,6 @@ let profileUserId = null;
 let expenseDetailUserId = null;
 let campoSurface = null;
 let campoIndoor = null;
-let campoSurfaces = [];
-let campoCoverages = [];
 let expActive = false;
 let expPayer = 'me';
 let expSplitMode = 'half';
@@ -698,28 +640,10 @@ onValue(ref(db,'/'), (snap) => {
     if (id==='player') renderPlayerProfile();
     if (id==='campi') renderCampi();
     if (id==='announce') renderAnnounce();
-    if (id==='bets') renderBetsScreen();
     if (id==='expenses') renderExpenses();
     if (id==='expense-detail') renderExpenseDetail();
   }
 });
-
-// MENU
-window.openMenu=function(){
-  document.getElementById('side-menu').classList.add('open');
-  document.getElementById('menu-overlay').classList.add('open');
-};
-window.closeMenu=function(){
-  document.getElementById('side-menu').classList.remove('open');
-  document.getElementById('menu-overlay').classList.remove('open');
-};
-window.menuNav=function(screen){
-  closeMenu();
-  showScreen(screen);
-  document.querySelectorAll('.menu-item').forEach(el=>el.classList.remove('active'));
-  const mi=document.getElementById('mi-'+screen);
-  if(mi) mi.classList.add('active');
-};
 
 function initials(name){
   if(!name) return '?';
@@ -807,7 +731,6 @@ function showScreen(name){
   if(name==='player') renderPlayerProfile();
   if(name==='campi') renderCampi();
   if(name==='announce') renderAnnounce();
-  if(name==='bets') renderBetsScreen();
   if(name==='expenses') renderExpenses();
   if(name==='expense-detail') renderExpenseDetail();
 }
@@ -835,10 +758,9 @@ window.login=async function(){
   currentUser=user;
   document.getElementById('login-email').value='';
   document.getElementById('login-pass').value='';
-  document.getElementById('menu-user-info').innerHTML=avatarHTML(currentUser,22)+'<span style="margin-left:4px">'+currentUser.name+'</span>';
   showScreen('dashboard');
 };
-window.logout=function(){ closeMenu(); currentUser=null; showScreen('login'); };
+window.logout=function(){ currentUser=null; showScreen('login'); };
 
 window.register=async function(){
   const name=document.getElementById('reg-name').value.trim();
@@ -871,7 +793,6 @@ function renderDashboard(){
   if(!currentUser) return;
   currentUser=state.users[currentUser.id]||currentUser;
   document.getElementById('dash-username').innerHTML=avatarHTML(currentUser,26)+'<span style="margin-left:6px">'+currentUser.name+'</span>';
-  document.getElementById('menu-user-info').innerHTML=avatarHTML(currentUser,22)+'<span style="margin-left:4px">'+currentUser.name+'</span>';
   const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
   const league=mem?state.leagues[mem.leagueId]:null;
   if(!league){
@@ -883,6 +804,7 @@ function renderDashboard(){
   document.getElementById('dash-league-content').style.display='block';
   document.getElementById('dash-league-name').textContent=league.name;
   document.getElementById('dash-elo').textContent=mem.rating+' Pt';
+
   const pending=vals(state.matches).filter(m=>m.status==='pending'&&m.p2Id===currentUser.id);
   const pendDiv=document.getElementById('dash-pending');
   if(pending.length>0){
@@ -890,12 +812,50 @@ function renderDashboard(){
     document.getElementById('dash-pending-title').textContent='Da Confermare ('+pending.length+')';
     document.getElementById('dash-pending-list').innerHTML=pending.map(m=>{
       const p1=state.users[m.p1Id];
-      return '<div class="pending-card" onclick="openConfirm(\''+m.id+'\')"><span style="color:var(--text)"><b>'+(p1?.name||'?')+'</b> ha inserito un risultato</span><span class="confirm-btn">Conferma →</span></div>';
+      return '<div class="pending-card" onclick="openConfirm(\''+m.id+'\')"><span style="color:var(--text)"><b>'+p1?.name+'</b> ha inserito un risultato</span><span class="confirm-btn">Conferma →</span></div>';
     }).join('');
   } else { pendDiv.style.display='none'; }
+
+  const ludoOn=!!league.ludopatia;
+  const betAmt=league.betAmount||3;
+  document.getElementById('dash-announce-wrap').style.display=ludoOn?'block':'none';
+
+  const betsDiv=document.getElementById('dash-bets');
+  if(ludoOn){
+    const openAnn=vals(state.announcements).filter(a=>a.leagueId===league.id&&a.status==='open');
+    if(openAnn.length>0){
+      betsDiv.style.display='block';
+      document.getElementById('dash-bets-list').innerHTML=openAnn.map(a=>{
+        const p1=state.users[a.p1Id],p2=state.users[a.p2Id];
+        const m1=vals(state.memberships).find(m=>m.userId===a.p1Id);
+        const m2=vals(state.memberships).find(m=>m.userId===a.p2Id);
+        const myBet=vals(state.bets).find(b=>b.announcementId===a.id&&b.userId===currentUser.id);
+        const isPlayer=a.p1Id===currentUser.id||a.p2Id===currentUser.id;
+        const canBet=!isPlayer&&!myBet;
+        const betCount=vals(state.bets).filter(b=>b.announcementId===a.id).length;
+        const pick1=myBet?.pickUserId===a.p1Id?'picked':'';
+        const pick2=myBet?.pickUserId===a.p2Id?'picked':'';
+        const disabled=canBet?'':'disabled';
+        const action1=canBet?'onclick="placeBet(\''+a.id+'\',\''+a.p1Id+'\')"':'';
+        const action2=canBet?'onclick="placeBet(\''+a.id+'\',\''+a.p2Id+'\')"':'';
+        const meta=isPlayer?'La tua partita — non puoi scommettere':myBet?('Hai puntato su '+state.users[myBet.pickUserId]?.name):('Scommetti '+betAmt+' Pt');
+        const cancelBtn=a.announcedBy===currentUser.id?'<button class="btn-small" style="margin-left:8px" onclick="cancelAnnouncement(\''+a.id+'\')">Cancella</button>':'';
+        return '<div class="bet-card">'+
+          '<div class="bet-vs">'+
+            '<div class="bet-player '+pick1+' '+disabled+'" '+action1+'>'+avatarHTML(p1,44)+'<div class="bet-name">'+(p1?.name||'?')+'</div><div class="bet-elo">'+(m1?.rating||'?')+' Pt</div></div>'+
+            '<span class="bet-vs-div">VS</span>'+
+            '<div class="bet-player '+pick2+' '+disabled+'" '+action2+'>'+avatarHTML(p2,44)+'<div class="bet-name">'+(p2?.name||'?')+'</div><div class="bet-elo">'+(m2?.rating||'?')+' Pt</div></div>'+
+          '</div>'+
+          '<div class="bet-meta"><span>'+meta+'</span><span>🎰 '+betCount+' scommess'+(betCount===1?'a':'e')+cancelBtn+'</span></div>'+
+        '</div>';
+      }).join('');
+    } else { betsDiv.style.display='none'; }
+  } else { betsDiv.style.display='none'; }
+
   const medals=['🥇','🥈','🥉'];
   const members=vals(state.memberships).filter(m=>m.leagueId===league.id)
-    .map(m=>({...m,user:state.users[m.userId]})).sort((a,b)=>b.rating-a.rating);
+    .map(m=>({...m,user:state.users[m.userId]}))
+    .sort((a,b)=>b.rating-a.rating);
   document.getElementById('dash-leaderboard').innerHTML=members.map((m,i)=>{
     const isMe=m.userId===currentUser.id;
     const medal=i<3?medals[i]:(i+1);
@@ -909,209 +869,6 @@ function renderDashboard(){
       '<span style="width:44px;text-align:right;color:var(--text2);font-size:12px;font-weight:600">'+((m.ignorantPoints||0).toFixed(1))+'</span>'+
     '</div>';
   }).join('');
-}
-
-// BETS SCREEN
-function renderBetsScreen(){
-  if(!currentUser) return;
-  const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
-  const league=mem?state.leagues[mem.leagueId]:null;
-  if(!league) return;
-  const ludoOn=!!league.ludopatia;
-  const betAmt=league.betAmount||3;
-  document.getElementById('bets-announce-wrap').style.display=ludoOn?'block':'none';
-  const openAnn=vals(state.announcements).filter(a=>a.leagueId===league.id&&a.status==='open');
-  const openList=document.getElementById('bets-open-list');
-  if(!ludoOn){
-    openList.innerHTML='<div class="empty-state" style="min-height:100px"><p>Le scommesse non sono attive.<br>L\'admin può attivarle dal pannello Admin.</p></div>';
-  } else if(!openAnn.length){
-    openList.innerHTML='<div class="empty-state" style="min-height:100px"><p>Nessuna partita annunciata.<br>Annuncia la tua prossima partita!</p></div>';
-  } else {
-    openList.innerHTML=openAnn.map(a=>{
-      const p1=state.users[a.p1Id],p2=state.users[a.p2Id];
-      const m1=vals(state.memberships).find(m=>m.userId===a.p1Id);
-      const m2=vals(state.memberships).find(m=>m.userId===a.p2Id);
-      const myBet=vals(state.bets).find(b=>b.announcementId===a.id&&b.userId===currentUser.id);
-      const isPlayer=a.p1Id===currentUser.id||a.p2Id===currentUser.id;
-      const canBet=!isPlayer&&!myBet;
-      const betCount=vals(state.bets).filter(b=>b.announcementId===a.id).length;
-      const pick1=myBet?.pickUserId===a.p1Id?'picked':'';
-      const pick2=myBet?.pickUserId===a.p2Id?'picked':'';
-      const dis=canBet?'':'disabled';
-      const a1=canBet?'onclick="placeBet(\''+a.id+'\',\''+a.p1Id+'\')"':'';
-      const a2=canBet?'onclick="placeBet(\''+a.id+'\',\''+a.p2Id+'\')"':'';
-      const meta=isPlayer?'La tua partita — non puoi scommettere':myBet?('Puntato su '+state.users[myBet.pickUserId]?.name):('Posta: '+betAmt+' Pt');
-      const cancelBtn=a.announcedBy===currentUser.id?'<button class="btn-small" onclick="cancelAnnouncement(\''+a.id+'\')">Cancella</button>':'';
-      return '<div class="bet-card">'+
-        '<div class="bet-vs">'+
-          '<div class="bet-player '+pick1+' '+dis+'" '+a1+'>'+avatarHTML(p1,44)+'<div class="bet-name">'+(p1?.name||'?')+'</div><div class="bet-elo">'+(m1?.rating||'?')+' Pt</div></div>'+
-          '<span class="bet-vs-div">VS</span>'+
-          '<div class="bet-player '+pick2+' '+dis+'" '+a2+'>'+avatarHTML(p2,44)+'<div class="bet-name">'+(p2?.name||'?')+'</div><div class="bet-elo">'+(m2?.rating||'?')+' Pt</div></div>'+
-        '</div>'+
-        '<div class="bet-meta"><span>'+meta+'</span><span>🎰 '+betCount+' scommess'+(betCount===1?'a':'e')+' '+cancelBtn+'</span></div>'+
-      '</div>';
-    }).join('');
-  }
-  const myBets=vals(state.bets).filter(b=>b.userId===currentUser.id&&(b.status==='won'||b.status==='lost')).slice(-20).reverse();
-  const histList=document.getElementById('bets-history-list');
-  if(!myBets.length){
-    histList.innerHTML='<div class="empty-state" style="min-height:80px"><p>Nessuna scommessa risolta ancora</p></div>';
-  } else {
-    histList.innerHTML=myBets.map(b=>{
-      const pick=state.users[b.pickUserId];
-      const won=b.status==='won';
-      const delta=won?(b.resolvedAmount||betAmt):-(b.resolvedAmount||betAmt);
-      return '<div class="history-card">'+
-        '<div style="display:flex;justify-content:space-between;align-items:center">'+
-          '<div style="font-size:13px;font-weight:600;color:var(--text)">Puntato su '+(pick?.name||'?')+'</div>'+
-          '<div style="font-size:15px;font-weight:800;color:'+(won?'var(--green)':'var(--red)')+'">'+  (delta>0?'+':'')+delta+' Pt</div>'+
-        '</div>'+
-        '<div style="font-size:11px;color:var(--text2);margin-top:4px;font-weight:600">'+(won?'✓ Indovinata':'✗ Sbagliata')+'</div>'+
-      '</div>';
-    }).join('');
-  }
-}
-
-// EXPENSES
-function calcBalance(myId,otherId){
-  let balance=0;
-  vals(state.expenses).forEach(e=>{
-    if(e.settled) return;
-    if(e.payerId===myId&&e.owerId===otherId) balance+=e.owedAmount;
-    if(e.payerId===otherId&&e.owerId===myId) balance-=e.owedAmount;
-  });
-  return balance;
-}
-function getExpensesBetween(userA,userB){
-  return vals(state.expenses).filter(e=>
-    (e.payerId===userA&&e.owerId===userB)||(e.payerId===userB&&e.owerId===userA)
-  ).sort((a,b)=>a.createdAt-b.createdAt);
-}
-function renderExpenses(){
-  if(!currentUser) return;
-  const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
-  if(!mem){document.getElementById('expenses-list').innerHTML='<div class="empty-state"><p>Non sei in nessuna lega</p></div>';return;}
-  const league=state.leagues[mem.leagueId];
-  const teammates=vals(state.memberships).filter(m=>m.leagueId===league.id&&m.userId!==currentUser.id).map(m=>({...m,user:state.users[m.userId]}));
-  const list=document.getElementById('expenses-list');
-  if(!teammates.length){list.innerHTML='<div class="empty-state"><p>Nessun compagno di lega ancora</p></div>';return;}
-  list.innerHTML=teammates.map(m=>{
-    const balance=calcBalance(currentUser.id,m.userId);
-    const absB=Math.abs(balance).toFixed(2);
-    let balColor='var(--text3)',balLabel='Pari',balText='€0.00';
-    if(balance>0.009){balColor='var(--green)';balLabel='Ti deve';balText='+€'+absB;}
-    else if(balance<-0.009){balColor='var(--red)';balLabel='Devi';balText='-€'+absB;}
-    return '<div class="expense-person-card" onclick="openExpenseDetail(\''+m.userId+'\')">'+
-      avatarHTML(m.user,44)+
-      '<div style="flex:1;min-width:0">'+
-        '<div style="font-size:15px;font-weight:700;color:var(--text)">'+(m.user?.name||'?')+'</div>'+
-        '<div style="font-size:12px;color:var(--text2);margin-top:2px;font-weight:500">'+m.rating+' Pt</div>'+
-      '</div>'+
-      '<div style="text-align:right">'+
-        '<div style="font-size:17px;font-weight:800;color:'+balColor+'">'+balText+'</div>'+
-        '<div style="font-size:10px;font-weight:600;color:'+balColor+';text-transform:uppercase;letter-spacing:0.5px">'+balLabel+'</div>'+
-      '</div>'+
-    '</div>';
-  }).join('');
-}
-window.openExpenseDetail=function(uid){ expenseDetailUserId=uid; showScreen('expense-detail'); };
-function renderExpenseDetail(){
-  if(!expenseDetailUserId||!currentUser) return;
-  const other=state.users[expenseDetailUserId];
-  document.getElementById('expense-detail-title').textContent=(other?.name||'Spese');
-  const balance=calcBalance(currentUser.id,expenseDetailUserId);
-  const absB=Math.abs(balance).toFixed(2);
-  const bannerEl=document.getElementById('expense-settle-banner');
-  const btnWrap=document.getElementById('expense-settle-btn-wrap');
-  if(Math.abs(balance)<0.01){
-    bannerEl.innerHTML='<div class="settle-banner even"><div><div class="settle-text">Siete in pari ✓</div></div><div class="settle-amount">€0.00</div></div>';
-    btnWrap.style.display='none';
-  } else if(balance>0){
-    bannerEl.innerHTML='<div class="settle-banner credit"><div><div class="settle-text">'+(other?.name||'?')+' ti deve</div></div><div class="settle-amount">€'+absB+'</div></div>';
-    btnWrap.style.display='block';
-  } else {
-    bannerEl.innerHTML='<div class="settle-banner debt"><div><div class="settle-text">Devi a '+(other?.name||'?')+'</div></div><div class="settle-amount">€'+absB+'</div></div>';
-    btnWrap.style.display='block';
-  }
-  const exps=getExpensesBetween(currentUser.id,expenseDetailUserId);
-  const detailList=document.getElementById('expense-detail-list');
-  if(!exps.length){detailList.innerHTML='<div class="empty-state" style="min-height:120px"><p>Nessuna spesa registrata</p></div>';return;}
-  detailList.innerHTML=exps.slice().reverse().map(e=>{
-    const iPaid=e.payerId===currentUser.id;
-    const date=new Date(e.createdAt).toLocaleDateString('it-IT',{day:'2-digit',month:'short'});
-    const settled=e.settled?'<span style="color:var(--text3);font-size:10px;font-weight:600;background:var(--surface2);padding:2px 8px;border-radius:999px;border:1px solid var(--border);margin-left:6px">SALDATO</span>':'';
-    const owedLabel=iPaid?(other?.name||'?')+' ti deve €'+e.owedAmount.toFixed(2):'Devi €'+e.owedAmount.toFixed(2)+' a '+(other?.name||'?');
-    const amtColor=e.settled?'var(--text3)':iPaid?'var(--green)':'var(--red)';
-    return '<div class="expense-detail-card">'+
-      '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">'+
-        '<div>'+
-          '<div style="font-size:13px;font-weight:600;color:var(--text)">'+(e.description||'Spesa campo')+'</div>'+
-          '<div style="font-size:11px;color:var(--text3);font-weight:500;margin-top:2px">'+date+'</div>'+
-        '</div>'+
-        '<div style="text-align:right;flex-shrink:0">'+
-          '<div style="font-size:15px;font-weight:800;color:'+amtColor+'">€'+e.totalAmount.toFixed(2)+'</div>'+
-          settled+
-        '</div>'+
-      '</div>'+
-      '<div style="font-size:11px;color:var(--text2);margin-top:6px;font-weight:500">'+(iPaid?'Hai pagato tu':'Ha pagato '+(other?.name||'?'))+' · '+owedLabel+'</div>'+
-    '</div>';
-  }).join('');
-}
-window.settleExpenses=async function(){
-  if(!expenseDetailUserId||!currentUser) return;
-  const exps=getExpensesBetween(currentUser.id,expenseDetailUserId).filter(e=>!e.settled);
-  for(const e of exps) await update(ref(db,'expenses/'+e.id),{settled:true,settledAt:Date.now()});
-  toast('Conto saldato con '+(state.users[expenseDetailUserId]?.name||'?'));
-  renderExpenseDetail();
-};
-
-// EXPENSE FORM
-window.toggleExpenseBlock=function(){
-  expActive=!expActive;
-  document.getElementById('exp-toggle').classList.toggle('on',expActive);
-  document.getElementById('exp-fields').classList.toggle('open',expActive);
-  if(!expActive) document.getElementById('exp-preview').style.display='none';
-};
-window.selectPayer=function(who){
-  expPayer=who;
-  document.getElementById('exp-paid-me').classList.toggle('sel',who==='me');
-  document.getElementById('exp-paid-opp').classList.toggle('sel',who==='opp');
-  updateSplitPreview();
-};
-window.selectSplit=function(mode){
-  expSplitMode=mode;
-  document.getElementById('exp-split-half').classList.toggle('sel',mode==='half');
-  document.getElementById('exp-split-custom').classList.toggle('sel',mode==='custom');
-  document.getElementById('exp-custom-fields').style.display=mode==='custom'?'block':'none';
-  updateSplitPreview();
-};
-window.updateSplitPreview=function(){
-  if(!expActive) return;
-  const total=parseFloat(document.getElementById('exp-total').value)||0;
-  const prev=document.getElementById('exp-preview');
-  if(total<=0){prev.style.display='none';return;}
-  const oppName=document.getElementById('exp-opp-name').textContent||'Avv.';
-  let myShare,oppShare;
-  if(expSplitMode==='half'){ myShare=total/2; oppShare=total/2; }
-  else { myShare=parseFloat(document.getElementById('exp-my-share').value)||0; oppShare=total-myShare; }
-  const payerName=expPayer==='me'?'Tu':oppName;
-  const owedAmt=expPayer==='me'?oppShare:myShare;
-  const owedTo=expPayer==='me'?oppName:'te';
-  prev.style.display='block';
-  prev.textContent=payerName+' paga €'+total.toFixed(2)+' — '+owedTo+' deve €'+owedAmt.toFixed(2);
-};
-function getExpenseData(matchId,p1Id,p2Id){
-  if(!expActive) return null;
-  const total=parseFloat(document.getElementById('exp-total').value)||0;
-  if(total<=0) return null;
-  let myShare,oppShare;
-  if(expSplitMode==='half'){ myShare=total/2; oppShare=total/2; }
-  else { myShare=parseFloat(document.getElementById('exp-my-share').value)||0; oppShare=total-myShare; }
-  const desc=document.getElementById('exp-desc').value.trim()||'Spesa campo';
-  const payerId=expPayer==='me'?p1Id:p2Id;
-  const owerId=expPayer==='me'?p2Id:p1Id;
-  const owedAmount=expPayer==='me'?oppShare:myShare;
-  return {payerId,owerId,owedAmount,totalAmount:total,description:desc,matchId,createdAt:Date.now(),settled:false};
 }
 
 function renderAdmin(){
@@ -1206,18 +963,170 @@ window.removePlayer=async function(uid){
   toast('Giocatore rimosso');
 };
 
+// ── EXPENSES (NUOVO) ──
+window.toggleExpenseBlock=function(){
+  expActive=!expActive;
+  const tg=document.getElementById('exp-toggle');
+  const fl=document.getElementById('exp-fields');
+  if(tg) tg.classList.toggle('on',expActive);
+  if(fl) fl.style.display=expActive?'block':'none';
+  if(!expActive){
+    const p=document.getElementById('exp-preview');
+    if(p) p.style.display='none';
+  } else {
+    updateSplitPreview();
+  }
+};
+window.selectPayer=function(who){
+  expPayer=who;
+  document.getElementById('exp-paid-me').classList.toggle('sel',who==='me');
+  document.getElementById('exp-paid-opp').classList.toggle('sel',who==='opp');
+  updateSplitPreview();
+};
+window.selectSplit=function(mode){
+  expSplitMode=mode;
+  document.getElementById('exp-split-half').classList.toggle('sel',mode==='half');
+  document.getElementById('exp-split-custom').classList.toggle('sel',mode==='custom');
+  document.getElementById('exp-custom-fields').style.display=mode==='custom'?'block':'none';
+  updateSplitPreview();
+};
+window.updateSplitPreview=function(){
+  if(!expActive) return;
+  const totalEl=document.getElementById('exp-total');
+  const prev=document.getElementById('exp-preview');
+  if(!totalEl||!prev) return;
+  const total=parseFloat(totalEl.value)||0;
+  if(total<=0){ prev.style.display='none'; return; }
+  const oppName=document.getElementById('exp-opp-name').textContent||'Avv.';
+  let myShare,oppShare;
+  if(expSplitMode==='half'){ myShare=total/2; oppShare=total/2; }
+  else { myShare=parseFloat(document.getElementById('exp-my-share').value)||0; oppShare=total-myShare; }
+  const payerName=expPayer==='me'?'Tu':oppName;
+  const owedAmt=expPayer==='me'?oppShare:myShare;
+  const owedTo=expPayer==='me'?oppName:'te';
+  prev.style.display='block';
+  prev.textContent=payerName+' paga €'+total.toFixed(2)+' — '+owedTo+' deve €'+owedAmt.toFixed(2);
+};
+function getExpenseData(matchId,p1Id,p2Id){
+  if(!expActive) return null;
+  const total=parseFloat(document.getElementById('exp-total').value)||0;
+  if(total<=0) return null;
+  let myShare,oppShare;
+  if(expSplitMode==='half'){ myShare=total/2; oppShare=total/2; }
+  else { myShare=parseFloat(document.getElementById('exp-my-share').value)||0; oppShare=total-myShare; }
+  const desc=document.getElementById('exp-desc').value.trim()||'Spesa campo';
+  const payerId=expPayer==='me'?p1Id:p2Id;
+  const owerId=expPayer==='me'?p2Id:p1Id;
+  const owedAmount=expPayer==='me'?oppShare:myShare;
+  return {payerId,owerId,owedAmount,totalAmount:total,description:desc,matchId,createdAt:Date.now(),settled:false};
+}
+function calcBalance(myId,otherId){
+  let balance=0;
+  vals(state.expenses).forEach(e=>{
+    if(e.settled) return;
+    if(e.payerId===myId&&e.owerId===otherId) balance+=e.owedAmount;
+    if(e.payerId===otherId&&e.owerId===myId) balance-=e.owedAmount;
+  });
+  return balance;
+}
+function getExpensesBetween(userA,userB){
+  return vals(state.expenses).filter(e=>
+    (e.payerId===userA&&e.owerId===userB)||(e.payerId===userB&&e.owerId===userA)
+  ).sort((a,b)=>a.createdAt-b.createdAt);
+}
+function renderExpenses(){
+  if(!currentUser) return;
+  const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
+  if(!mem){document.getElementById('expenses-list').innerHTML='<div class="empty-state"><p>Non sei in nessuna lega</p></div>';return;}
+  const league=state.leagues[mem.leagueId];
+  const teammates=vals(state.memberships).filter(m=>m.leagueId===league.id&&m.userId!==currentUser.id).map(m=>({...m,user:state.users[m.userId]}));
+  const list=document.getElementById('expenses-list');
+  if(!teammates.length){list.innerHTML='<div class="empty-state"><p>Nessun compagno di lega ancora</p></div>';return;}
+  list.innerHTML=teammates.map(m=>{
+    const balance=calcBalance(currentUser.id,m.userId);
+    const absB=Math.abs(balance).toFixed(2);
+    let balColor='var(--text3)',balLabel='Pari',balText='€0.00';
+    if(balance>0.009){balColor='var(--green)';balLabel='Ti deve';balText='+€'+absB;}
+    else if(balance<-0.009){balColor='var(--red)';balLabel='Devi';balText='-€'+absB;}
+    return '<div class="history-card" onclick="openExpenseDetail(\''+m.userId+'\')" style="cursor:pointer;display:flex;align-items:center;gap:14px">'+
+      avatarHTML(m.user,44)+
+      '<div style="flex:1;min-width:0">'+
+        '<div style="font-size:15px;font-weight:700;color:var(--text)">'+(m.user?.name||'?')+'</div>'+
+        '<div style="font-size:12px;color:var(--text2);margin-top:2px;font-weight:500">'+m.rating+' Pt</div>'+
+      '</div>'+
+      '<div style="text-align:right">'+
+        '<div style="font-size:17px;font-weight:800;color:'+balColor+'">'+balText+'</div>'+
+        '<div style="font-size:10px;font-weight:600;color:'+balColor+';text-transform:uppercase;letter-spacing:0.5px">'+balLabel+'</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+window.openExpenseDetail=function(uid){ expenseDetailUserId=uid; showScreen('expense-detail'); };
+function renderExpenseDetail(){
+  if(!expenseDetailUserId||!currentUser) return;
+  const other=state.users[expenseDetailUserId];
+  document.getElementById('expense-detail-title').textContent=(other?.name||'Spese');
+  const balance=calcBalance(currentUser.id,expenseDetailUserId);
+  const absB=Math.abs(balance).toFixed(2);
+  const bannerEl=document.getElementById('expense-settle-banner');
+  const btnWrap=document.getElementById('expense-settle-btn-wrap');
+  if(Math.abs(balance)<0.01){
+    bannerEl.innerHTML='<div style="background:linear-gradient(135deg,#636366,#8e8e93);border-radius:var(--radius-sm);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px"><div style="color:#fff;font-size:13px;font-weight:600">Siete in pari ✓</div><div style="color:#fff;font-size:22px;font-weight:900">€0.00</div></div>';
+    btnWrap.style.display='none';
+  } else if(balance>0){
+    bannerEl.innerHTML='<div style="background:linear-gradient(135deg,#28a745,var(--green));border-radius:var(--radius-sm);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;box-shadow:0 4px 16px rgba(52,199,89,0.3)"><div style="color:#fff;font-size:13px;font-weight:600">'+(other?.name||'?')+' ti deve</div><div style="color:#fff;font-size:22px;font-weight:900">€'+absB+'</div></div>';
+    btnWrap.style.display='block';
+  } else {
+    bannerEl.innerHTML='<div style="background:linear-gradient(135deg,#cc2200,var(--red));border-radius:var(--radius-sm);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;box-shadow:0 4px 16px rgba(255,59,48,0.3)"><div style="color:#fff;font-size:13px;font-weight:600">Devi a '+(other?.name||'?')+'</div><div style="color:#fff;font-size:22px;font-weight:900">€'+absB+'</div></div>';
+    btnWrap.style.display='block';
+  }
+  const exps=getExpensesBetween(currentUser.id,expenseDetailUserId);
+  const detailList=document.getElementById('expense-detail-list');
+  if(!exps.length){detailList.innerHTML='<div class="empty-state" style="min-height:120px"><p>Nessuna spesa registrata</p></div>';return;}
+  detailList.innerHTML=exps.slice().reverse().map(e=>{
+    const iPaid=e.payerId===currentUser.id;
+    const date=new Date(e.createdAt).toLocaleDateString('it-IT',{day:'2-digit',month:'short'});
+    const settled=e.settled?'<span style="color:var(--text3);font-size:10px;font-weight:600;background:var(--surface2);padding:2px 8px;border-radius:999px;border:1px solid var(--border);margin-left:6px">SALDATO</span>':'';
+    const owedLabel=iPaid?(other?.name||'?')+' ti deve €'+e.owedAmount.toFixed(2):'Devi €'+e.owedAmount.toFixed(2)+' a '+(other?.name||'?');
+    const amtColor=e.settled?'var(--text3)':iPaid?'var(--green)':'var(--red)';
+    return '<div class="history-card">'+
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">'+
+        '<div>'+
+          '<div style="font-size:13px;font-weight:600;color:var(--text)">'+(e.description||'Spesa campo')+'</div>'+
+          '<div style="font-size:11px;color:var(--text3);font-weight:500;margin-top:2px">'+date+'</div>'+
+        '</div>'+
+        '<div style="text-align:right;flex-shrink:0">'+
+          '<div style="font-size:15px;font-weight:800;color:'+amtColor+'">€'+e.totalAmount.toFixed(2)+'</div>'+
+          settled+
+        '</div>'+
+      '</div>'+
+      '<div style="font-size:11px;color:var(--text2);margin-top:6px;font-weight:500">'+(iPaid?'Hai pagato tu':'Ha pagato '+(other?.name||'?'))+' · '+owedLabel+'</div>'+
+    '</div>';
+  }).join('');
+}
+window.settleExpenses=async function(){
+  if(!expenseDetailUserId||!currentUser) return;
+  const exps=getExpensesBetween(currentUser.id,expenseDetailUserId).filter(e=>!e.settled);
+  for(const e of exps) await update(ref(db,'expenses/'+e.id),{settled:true,settledAt:Date.now()});
+  toast('Conto saldato con '+(state.users[expenseDetailUserId]?.name||'?'));
+  renderExpenseDetail();
+};
+
 function renderNewMatch(){
   nmSets=2;
   nmIgnorant={aces_p1:0,aces_p2:0,df_p1:0,df_p2:0,racket_p1:0,racket_p2:0};
   expActive=false; expPayer='me'; expSplitMode='half';
   document.getElementById('exp-toggle').classList.remove('on');
-  document.getElementById('exp-fields').classList.remove('open');
+  document.getElementById('exp-fields').style.display='none';
   document.getElementById('exp-preview').style.display='none';
   document.getElementById('exp-split-half').classList.add('sel');
   document.getElementById('exp-split-custom').classList.remove('sel');
   document.getElementById('exp-custom-fields').style.display='none';
   document.getElementById('exp-paid-me').classList.remove('sel');
   document.getElementById('exp-paid-opp').classList.remove('sel');
+  document.getElementById('exp-total').value='';
+  document.getElementById('exp-my-share').value='';
+  document.getElementById('exp-desc').value='';
   const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
   const league=mem?state.leagues[mem.leagueId]:null;
   if(!league) return;
@@ -1276,7 +1185,6 @@ function renderNMIgnorant(){
   ).join('');
 }
 window.changeIgnorant=function(key,d){ nmIgnorant[key]=Math.max(0,(nmIgnorant[key]||0)+d); document.getElementById('ig-'+key).textContent=nmIgnorant[key]; };
-
 window.submitMatch=async function(){
   const oppId=document.getElementById('nm-opponent').value;
   if(!oppId) return toast('Seleziona un avversario','error');
@@ -1319,7 +1227,7 @@ window.submitAnnouncement=async function(){
   const aid='ann_'+Date.now();
   await set(ref(db,'announcements/'+aid),{id:aid,leagueId:mem.leagueId,p1Id:currentUser.id,p2Id:oppId,announcedBy:currentUser.id,status:'open',createdAt:Date.now()});
   toast('Partita annunciata!');
-  showScreen('bets');
+  showScreen('dashboard');
 };
 window.placeBet=async function(annId,pickId){
   const ann=state.announcements[annId];
@@ -1499,41 +1407,41 @@ function renderHistory(){
   }).join('');
 }
 
-window.toggleSurface=function(s){
-  const i=campoSurfaces.indexOf(s);
-  if(i>=0) campoSurfaces.splice(i,1); else campoSurfaces.push(s);
-  document.querySelectorAll('#surface-sel .surface-btn').forEach(b=>b.classList.toggle('sel',campoSurfaces.includes(b.dataset.surface)));
+window.selectSurface=function(s){
+  campoSurface=s;
+  document.querySelectorAll('#surface-sel .surface-btn').forEach(b=>b.classList.toggle('sel',b.dataset.surface===s));
 };
-window.toggleIndoor=function(v){
-  const i=campoCoverages.indexOf(v);
-  if(i>=0) campoCoverages.splice(i,1); else campoCoverages.push(v);
-  document.querySelectorAll('#indoor-sel .surface-btn').forEach(b=>b.classList.toggle('sel',campoCoverages.includes(b.dataset.indoor)));
+window.selectIndoor=function(v){
+  campoIndoor=v;
+  document.querySelectorAll('#indoor-sel .surface-btn').forEach(b=>b.classList.toggle('sel',b.dataset.indoor===String(v)));
 };
 function surfaceMeta(s){
   if(s==='terra') return {icon:'🟠',label:'Terra rossa',color:'#d06a3a'};
   if(s==='cemento') return {icon:'⬜',label:'Cemento',color:'var(--text2)'};
-  if(s==='sintetico') return {icon:'🎾',label:'Sintetico',color:'var(--green)'};
+  if(s==='sintetico') return {icon:'🟢',label:'Sintetico',color:'var(--green)'};
   return {icon:'❓',label:'—',color:'var(--text2)'};
 }
 function renderCampi(){
   if(!currentUser) return;
   const myLeague=vals(state.leagues).find(l=>l.adminId===currentUser.id);
   document.getElementById('campi-admin-section').style.display=myLeague?'block':'none';
-  campoSurfaces=[]; campoCoverages=[];
-  document.querySelectorAll('#surface-sel .surface-btn,#indoor-sel .surface-btn').forEach(b=>b.classList.remove('sel'));
+  campoSurface=null; campoIndoor=null;
+  document.querySelectorAll('#surface-sel .surface-btn').forEach(b=>b.classList.remove('sel'));
+  document.querySelectorAll('#indoor-sel .surface-btn').forEach(b=>b.classList.remove('sel'));
   const mem=vals(state.memberships).find(m=>m.userId===currentUser.id);
   const campi=vals(state.campi||{}).filter(c=>c.leagueId===mem?.leagueId);
   const list=document.getElementById('campi-list');
   if(!campi.length){list.innerHTML='<div class="empty-state"><p>Nessun campo aggiunto.<br>L\'admin può aggiungerne.</p></div>';return;}
   list.innerHTML=campi.map(c=>{
-    const surfaces=Array.isArray(c.surfaces)?c.surfaces:(c.surface?[c.surface]:[]);
-    const coverages=Array.isArray(c.coverages)?c.coverages:(c.indoor===true?['indoor']:c.indoor===false?['outdoor']:[]);
-    const spills=surfaces.map(s=>{const sm=surfaceMeta(s);return '<span class="surface-pill" style="color:'+sm.color+'">'+sm.icon+' '+sm.label+'</span>';}).join('');
-    const cpills=coverages.map(cv=>'<span class="surface-pill">'+(cv==='indoor'?'☂️ Coperto':'☀️ Scoperto')+'</span>').join('');
+    const sm=surfaceMeta(c.surface);
+    const indoor=c.indoor?'☂️ Coperto':'☀️ Scoperto';
     return '<div class="history-card" style="display:flex;align-items:center;justify-content:space-between">'+
       '<div style="flex:1;min-width:0">'+
-        '<div style="font-weight:700;margin-bottom:6px">'+c.nome+'</div>'+
-        '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px">'+spills+cpills+'</div>'+
+        '<div style="color:var(--text);font-weight:700;margin-bottom:6px">'+c.nome+'</div>'+
+        '<div style="display:flex;gap:6px;margin-bottom:6px;flex-wrap:wrap">'+
+          '<span class="surface-pill" style="color:'+sm.color+'">'+sm.icon+' '+sm.label+'</span>'+
+          '<span class="surface-pill">'+indoor+'</span>'+
+        '</div>'+
         '<div style="color:var(--text3);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+c.url+'</div>'+
       '</div>'+
       '<div style="display:flex;gap:8px;flex-shrink:0;margin-left:12px;flex-direction:column;align-items:flex-end">'+
@@ -1549,13 +1457,13 @@ window.addCampo=async function(){
   const nome=document.getElementById('campo-nome').value.trim();
   const url=document.getElementById('campo-url').value.trim();
   if(!nome||!url) return toast('Compila nome e link','error');
-  if(!campoSurfaces.length) return toast('Scegli almeno una superficie','error');
-  if(!campoCoverages.length) return toast('Scegli almeno una copertura','error');
+  if(!campoSurface) return toast('Scegli la superficie','error');
+  if(campoIndoor===null) return toast('Indica se è coperto','error');
   const id='campo_'+Date.now();
-  await set(ref(db,'campi/'+id),{id,nome,url,leagueId:myLeague.id,surfaces:[...campoSurfaces],coverages:[...campoCoverages]});
+  await set(ref(db,'campi/'+id),{id,nome,url,leagueId:myLeague.id,surface:campoSurface,indoor:campoIndoor});
   document.getElementById('campo-nome').value=''; document.getElementById('campo-url').value='';
-  campoSurfaces=[]; campoCoverages=[];
-  document.querySelectorAll('#surface-sel .surface-btn,#indoor-sel .surface-btn').forEach(b=>b.classList.remove('sel'));
+  campoSurface=null; campoIndoor=null;
+  document.querySelectorAll('#surface-sel .surface-btn, #indoor-sel .surface-btn').forEach(b=>b.classList.remove('sel'));
   toast('Campo aggiunto!');
 };
 window.removeCampo=async function(id){ await set(ref(db,'campi/'+id),null); toast('Campo rimosso'); };
